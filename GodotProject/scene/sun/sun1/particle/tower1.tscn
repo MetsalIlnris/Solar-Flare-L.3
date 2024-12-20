@@ -1,0 +1,248 @@
+[gd_scene load_steps=24 format=3 uid="uid://dpneo62df4d7p"]
+
+[ext_resource type="Script" path="res://scene/sun/sun1/particle/tower1.gd" id="1_gyrsg"]
+[ext_resource type="Texture2D" uid="uid://76j0c3k3fvpw" path="res://asset/scene/sun/tower/tower1/main.png" id="2_pmke1"]
+[ext_resource type="PackedScene" uid="uid://bcsgexdd27iia" path="res://scene/Components/ShakeComponent.tscn" id="3_wkw14"]
+[ext_resource type="Texture2D" uid="uid://d3wqj0apqv0q6" path="res://asset/scene/sun/particle/UI/cursor.png" id="4_j5qfm"]
+[ext_resource type="Texture2D" uid="uid://dbxjdnl17b4pq" path="res://asset/scene/sun/particle/UI/arrow.png" id="5_6uqjc"]
+[ext_resource type="Texture2D" uid="uid://q4w50f8novdj" path="res://asset/scene/sun/particle/UI/cursor_area.png" id="5_67qma"]
+[ext_resource type="PackedScene" uid="uid://x7vd77yi3s7j" path="res://scene/Components/BlinkComponent.tscn" id="5_a5wvu"]
+[ext_resource type="PackedScene" uid="uid://c50lx2daa5pn7" path="res://scene/Components/FloatComponent.tscn" id="6_m1byx"]
+[ext_resource type="Texture2D" uid="uid://baiuqo15vros" path="res://asset/scene/sun/particle/UI/arrow_no.png" id="7_xn7eg"]
+[ext_resource type="Texture2D" uid="uid://lea5e1m5g2g1" path="res://asset/scene/sun/particle/UI/arrow2.png" id="8_htttn"]
+[ext_resource type="Texture2D" uid="uid://d3oaxhtjp88q3" path="res://asset/scene/sun/tower/tower1/1.png" id="12_g7r3u"]
+[ext_resource type="PackedScene" uid="uid://btblabqc11rhn" path="res://scene/Components/FollowComponent.tscn" id="13_mtv47"]
+[ext_resource type="Texture2D" uid="uid://2g1f5c0p3q3g" path="res://asset/scene/sun/tower/tower1/2.png" id="14_mq8lb"]
+[ext_resource type="Texture2D" uid="uid://k45jo3xll16k" path="res://asset/scene/sun/tower/tower1/3.png" id="15_e8644"]
+[ext_resource type="Texture2D" uid="uid://dhtpfxfeu3fr1" path="res://asset/scene/sun/tower/tower1/xu.png" id="16_et3wv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_81wae"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4tpw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_xn7eg")
+}],
+"loop": true,
+"name": &"no",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6uqjc")
+}],
+"loop": true,
+"name": &"yes",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5w33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdu6h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xy7sn"]
+radius = 71.0634
+
+[sub_resource type="Animation" id="Animation_vjwkp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main/Cursor/Arrow/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main/CapturedParticle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h0jq2"]
+resource_name = "collect"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main/Cursor/Arrow/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.5, 2.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main/CapturedParticle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.5, 2.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6dh7d"]
+_data = {
+"RESET": SubResource("Animation_vjwkp"),
+"collect": SubResource("Animation_h0jq2")
+}
+
+[node name="Tower1" type="Node2D"]
+script = ExtResource("1_gyrsg")
+cursor_speed = 1.6
+
+[node name="Tower" type="CharacterBody2D" parent="."]
+position = Vector2(-5, 550)
+collision_mask = 16
+platform_wall_layers = 16
+
+[node name="Main" type="Sprite2D" parent="Tower"]
+position = Vector2(4, 21)
+texture = ExtResource("2_pmke1")
+
+[node name="ShakeComponent" parent="Tower/Main" instance=ExtResource("3_wkw14")]
+amplitude = 0
+frequency = 50
+
+[node name="FloatComponent" parent="Tower/Main" instance=ExtResource("6_m1byx")]
+float_range = Vector2(0, 8)
+
+[node name="CapturedParticle" type="Sprite2D" parent="Tower/Main"]
+visible = false
+position = Vector2(-2, -27)
+texture = SubResource("CompressedTexture2D_81wae")
+
+[node name="ShakeComponent" parent="Tower/Main/CapturedParticle" instance=ExtResource("3_wkw14")]
+frequency = 50
+
+[node name="BlinkComponent" parent="Tower/Main/CapturedParticle" instance=ExtResource("5_a5wvu")]
+blink_speed = 8.0
+blink_range = Vector2(0.5, 1)
+
+[node name="Marker" type="Marker2D" parent="Tower/Main"]
+position = Vector2(-3.95, -21.815)
+
+[node name="Cursor" type="Sprite2D" parent="Tower/Main"]
+position = Vector2(-120, -30)
+rotation = -1.5708
+texture = ExtResource("4_j5qfm")
+
+[node name="CursorArea" type="Sprite2D" parent="Tower/Main/Cursor"]
+show_behind_parent = true
+position = Vector2(0, -1)
+scale = Vector2(1.735, 1)
+texture = ExtResource("5_67qma")
+
+[node name="FloatComponent" parent="Tower/Main/Cursor/CursorArea" instance=ExtResource("6_m1byx")]
+float_speed = 1.6
+float_range = Vector2(12, 0)
+
+[node name="Arrow" type="CharacterBody2D" parent="Tower/Main/Cursor"]
+position = Vector2(0, -21)
+scale = Vector2(1.08333, 1.0641)
+collision_mask = 64
+motion_mode = 1
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Tower/Main/Cursor/Arrow"]
+sprite_frames = SubResource("SpriteFrames_4tpw2")
+animation = &"yes"
+autoplay = "yes"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower/Main/Cursor/Arrow"]
+shape = SubResource("CircleShape2D_b5w33")
+
+[node name="Bound" type="StaticBody2D" parent="Tower/Main/Cursor"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower/Main/Cursor/Bound"]
+position = Vector2(-109, -19)
+shape = SubResource("RectangleShape2D_wdu6h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tower/Main/Cursor/Bound"]
+position = Vector2(110, -21)
+shape = SubResource("RectangleShape2D_wdu6h")
+
+[node name="Arrow" type="Node2D" parent="Tower/Main"]
+position = Vector2(-4, -21)
+
+[node name="Arrow" type="Sprite2D" parent="Tower/Main/Arrow"]
+position = Vector2(107, 0)
+rotation = 2.87979
+texture = ExtResource("8_htttn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower"]
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_xy7sn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tower"]
+libraries = {
+"": SubResource("AnimationLibrary_6dh7d")
+}
+
+[node name="Balls" type="Node2D" parent="."]
+position = Vector2(-5, 550)
+
+[node name="1" type="Sprite2D" parent="Balls"]
+position = Vector2(-3.5, 149)
+texture = ExtResource("12_g7r3u")
+
+[node name="FollowComponent" parent="Balls/1" node_paths=PackedStringArray("target") instance=ExtResource("13_mtv47")]
+target = NodePath("../../../Tower/Main")
+speed = 0.7
+
+[node name="Xu" type="Sprite2D" parent="Balls"]
+position = Vector2(-5, 243)
+texture = ExtResource("16_et3wv")
+
+[node name="FollowComponent" parent="Balls/Xu" node_paths=PackedStringArray("target") instance=ExtResource("13_mtv47")]
+target = NodePath("../../3")
+speed = 0.7
+
+[node name="2" type="Sprite2D" parent="Balls"]
+position = Vector2(-5.5, 183)
+texture = ExtResource("14_mq8lb")
+
+[node name="FollowComponent" parent="Balls/2" node_paths=PackedStringArray("target") instance=ExtResource("13_mtv47")]
+target = NodePath("../../1")
+speed = 0.65
+
+[node name="3" type="Sprite2D" parent="Balls"]
+position = Vector2(-8.5, 234)
+texture = ExtResource("15_e8644")
+
+[node name="FollowComponent" parent="Balls/3" node_paths=PackedStringArray("target") instance=ExtResource("13_mtv47")]
+target = NodePath("../../2")
+speed = 0.6
+
+[node name="Particle" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="Timer"]
+position = Vector2(1914, 589)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-6, 488)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

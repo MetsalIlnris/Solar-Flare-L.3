@@ -1,0 +1,78 @@
+~ cabin_out
+16180[#16180Normal][#l]: 出舱门前必须先换气。而且我们还没有穿宇航服呢。
+16180[#16180Normal][#l]: 不过现在是测试阶段，你可以直接试试出门。
+- 出门
+	do PlayerState.door_transfer.emit(true)
+- 算了
+	do PlayerState.door_transfer.emit(false)
+
+=> END
+
+~ first
+岩[#yanSmile][#l]: 是太阳！我们离得好近！!!!
+do PlayerState.dialog_action.emit()
+=> END
+
+~ ball
+岩[#yanSmile][#l]: 你好！
+巨大机械: ···来者何人？进来再说
+=> END
+
+~ ball_saw
+岩[#yanSmile][#l]: 快看，前面有一座特别大的机器离我们很近！
+do PlayerState.dialog_action.emit()
+=> END
+
+~ ball_saw2
+16180[#16180Normal][#l]: 这座机器应该是用来收集太阳粒子的。我们靠近点看看。
+=> END
+
+~ ball_enter
+岩[#yanSmile][#l]: 真的要进去吗？
+16180[#16180Normal][#l]: 嘘...
+=> END
+
+~ exit_tower
+岩[#yanSmile][#l]: 要离开太阳粒子捕捉塔吗？
+- 离开
+	do PlayerState.door_transfer.emit(true)
+- 算了
+	do PlayerState.door_transfer.emit(false)
+=> END
+
+~ station_mid
+岩[#yanSmile][#l]: 男，女，还有....兔子！
+16180[#16180Normal][#l]: ...很人性化！
+=> END
+
+~ particle_collect_start
+岩[#yanSmile][#l]: 这里是太阳粒子捕捉测试！
+16180[#16180Normal][#l]: 左边的操作塔控制收集质子，右边的操作塔控制收集电子，岩要选择操纵哪座捕捉塔？
+岩[#yanSmile][#l]: 你来决定吧！
+- 左边
+	do PlayerState.dialog_action.emit(1)
+	岩[#yanSmile][#l]: 那我去操控右边的啦
+- 右边
+	do PlayerState.dialog_action.emit(2)
+	岩[#yanSmile][#l]: 那我去操控右边的啦
+- 我一个人就行
+	do PlayerState.dialog_action.emit(3)
+	岩[#yanSmile][#l]: 提前体验崩坏线是吧（加油
+=> END
+
+~ particle_collect_fail
+岩[#yanSmile][#l]: 粒子逃脱了...
+岩[#yanSmile][#l]: 就差一点！
+=> END
+
+~ particle_collect_success
+岩[#yanSuccess][#l]: 收集到了！
+=> END
+
+~ particle_collect_finish
+岩[#yanSuccess][#l]: 收集到五个了！可以离开了。
+=> END
+
+~ chain_down
+进行下潜
+=> END

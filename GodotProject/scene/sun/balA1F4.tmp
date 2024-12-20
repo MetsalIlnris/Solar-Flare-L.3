@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://t0twhvsitcav"]
+
+[ext_resource type="Texture2D" uid="uid://cpq2x1i2ac5yw" path="res://asset/scene/sun/tower/ball normal.png" id="1_nn1dx"]
+[ext_resource type="Script" path="res://scene/sun/ball.gd" id="1_sybmq"]
+[ext_resource type="Texture2D" uid="uid://cga7pglmmm2o" path="res://asset/UI/characters/none.png" id="2_v1810"]
+[ext_resource type="Texture2D" uid="uid://bfnywcqcxt3pb" path="res://asset/scene/sun/tower/1.png" id="3_mwchf"]
+[ext_resource type="Texture2D" uid="uid://5lodbmpul3gp" path="res://asset/scene/sun/tower/2.png" id="4_ceqvc"]
+[ext_resource type="Texture2D" uid="uid://dd6j1wy2l36al" path="res://asset/scene/sun/tower/3.png" id="5_1si4y"]
+[ext_resource type="Texture2D" uid="uid://d1k3cbqjq2abu" path="res://asset/scene/sun/tower/stair.png" id="6_1sstv"]
+[ext_resource type="Texture2D" uid="uid://fhg73q2w5elh" path="res://asset/scene/sun/tower/doorframe.png" id="7_gs7t2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4sig"]
+radius = 268.57
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csk47"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v1810")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mwchf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ceqvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1si4y")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="Ball" type="CharacterBody2D"]
+script = ExtResource("1_sybmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-154, -115)
+shape = SubResource("CircleShape2D_e4sig")
+
+[node name="BallNormal" type="Sprite2D" parent="."]
+texture = ExtResource("1_nn1dx")
+
+[node name="Door" type="AnimatedSprite2D" parent="BallNormal"]
+position = Vector2(-353, 16)
+sprite_frames = SubResource("SpriteFrames_csk47")
+animation = &"open"
+
+[node name="Stair" type="Sprite2D" parent="BallNormal"]
+position = Vector2(-291, 88)
+texture = ExtResource("6_1sstv")
+
+[node name="Doorframe" type="Sprite2D" parent="."]
+texture = ExtResource("7_gs7t2")

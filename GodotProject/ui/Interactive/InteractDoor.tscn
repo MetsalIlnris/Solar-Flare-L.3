@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://duxvarvt3mg3r"]
+
+[ext_resource type="PackedScene" uid="uid://bk480uvttabo" path="res://ui/Interactive/InteractArea.tscn" id="1_oi86t"]
+[ext_resource type="Script" path="res://ui/Interactive/InteractDoor.gd" id="2_25jsi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85nnb"]
+size = Vector2(200, 200)
+
+[node name="InteractDoor" groups=["door"] instance=ExtResource("1_oi86t")]
+script = ExtResource("2_25jsi")
+transfer_fade = false
+transfer_duration = 0.0
+change_size = -1.0
+change_bgm = ""
+change_bgm_effect = 0
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_85nnb")
+
+[node name="Marker2D" type="Marker2D" parent="." index="1"]
+position = Vector2(150, 0)
+
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 3.0
+one_shot = true

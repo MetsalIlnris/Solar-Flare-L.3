@@ -1,0 +1,152 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbggkn4wy1qs5"]
+
+[ext_resource type="Script" path="res://scene/sun/sun3/electric_switch/switch.gd" id="1_6icu5"]
+[ext_resource type="PackedScene" uid="uid://cu4lwk6t8oacb" path="res://ui/Buttons/SwtichButton.tscn" id="2_1xqax"]
+[ext_resource type="Texture2D" uid="uid://bdnu8dhk8j4fk" path="res://asset/scene/sun3/research/switch/background.png" id="2_3ybpn"]
+[ext_resource type="SpriteFrames" uid="uid://bkuqqgpwilw61" path="res://scene/sun/sun3/light_switch_small.tres" id="3_e3uji"]
+[ext_resource type="SpriteFrames" uid="uid://dbiyhxkwi4cw0" path="res://scene/sun/sun3/light_switch_big.tres" id="4_2b33e"]
+[ext_resource type="Texture2D" uid="uid://bxnqtx6eeh2ma" path="res://asset/scene/sun3/research/switch/lightoff.png" id="5_84tkb"]
+[ext_resource type="Texture2D" uid="uid://bx32rdngaeenb" path="res://asset/scene/sun3/research/switch/lighton.png" id="6_4uhsw"]
+[ext_resource type="PackedScene" uid="uid://dbcc5afpi4q73" path="res://ui/Buttons/InteractiveButton.tscn" id="7_ljobg"]
+[ext_resource type="Texture2D" uid="uid://gdh2hkfp3amb" path="res://asset/scene/sun3/research/switch/back.png" id="8_2eilc"]
+[ext_resource type="Texture2D" uid="uid://cra3a0t2d5x0d" path="res://asset/scene/sun3/research/switch/hint.png" id="10_xroqo"]
+
+[node name="Switch" type="CanvasLayer"]
+layer = 9
+offset = Vector2(960, 540)
+transform = Transform2D(1, 0, 0, 1, 960, 540)
+script = ExtResource("1_6icu5")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-2, 1)
+texture = ExtResource("2_3ybpn")
+
+[node name="Button1" parent="." instance=ExtResource("2_1xqax")]
+offset_left = -250.0
+offset_right = -210.0
+
+[node name="AnimatedSprite2D" parent="Button1" index="1"]
+sprite_frames = ExtResource("3_e3uji")
+autoplay = "off"
+
+[node name="Button2" parent="." instance=ExtResource("2_1xqax")]
+
+[node name="AnimatedSprite2D" parent="Button2" index="1"]
+sprite_frames = ExtResource("3_e3uji")
+
+[node name="Button3" parent="." instance=ExtResource("2_1xqax")]
+offset_left = 250.0
+offset_right = 290.0
+
+[node name="AnimatedSprite2D" parent="Button3" index="1"]
+sprite_frames = ExtResource("3_e3uji")
+
+[node name="Button4" parent="." instance=ExtResource("2_1xqax")]
+offset_left = 500.0
+offset_right = 540.0
+
+[node name="AnimatedSprite2D" parent="Button4" index="1"]
+sprite_frames = ExtResource("3_e3uji")
+
+[node name="Button5" parent="." instance=ExtResource("2_1xqax")]
+offset_left = 750.0
+offset_top = 1.0
+offset_right = 790.0
+offset_bottom = 41.0
+
+[node name="AnimatedSprite2D" parent="Button5" index="1"]
+sprite_frames = ExtResource("3_e3uji")
+
+[node name="ButtonB" parent="." instance=ExtResource("2_1xqax")]
+offset_left = -600.0
+offset_right = -560.0
+
+[node name="AnimatedSprite2D" parent="ButtonB" index="1"]
+sprite_frames = ExtResource("4_2b33e")
+autoplay = "off"
+
+[node name="Light1" type="Node2D" parent="."]
+position = Vector2(-250, -200)
+
+[node name="Lightoff" type="Sprite2D" parent="Light1"]
+position = Vector2(4, 15)
+texture = ExtResource("5_84tkb")
+
+[node name="Lighton" type="Sprite2D" parent="Light1"]
+visible = false
+position = Vector2(4, 15)
+texture = ExtResource("6_4uhsw")
+
+[node name="LightButton1" type="Button" parent="Light1"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -34.0
+offset_top = -28.0
+offset_right = 36.0
+offset_bottom = 44.0
+
+[node name="Light2" type="Node2D" parent="."]
+position = Vector2(250, 200)
+
+[node name="Lightoff" type="Sprite2D" parent="Light2"]
+position = Vector2(4, 15)
+texture = ExtResource("5_84tkb")
+
+[node name="Lighton" type="Sprite2D" parent="Light2"]
+visible = false
+position = Vector2(4, 15)
+texture = ExtResource("6_4uhsw")
+
+[node name="LightButton2" type="Button" parent="Light2"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -34.0
+offset_top = -28.0
+offset_right = 36.0
+offset_bottom = 44.0
+
+[node name="Light3" type="Node2D" parent="."]
+position = Vector2(750, -200)
+
+[node name="Lightoff" type="Sprite2D" parent="Light3"]
+position = Vector2(4, 15)
+texture = ExtResource("5_84tkb")
+
+[node name="Lighton" type="Sprite2D" parent="Light3"]
+visible = false
+position = Vector2(4, 15)
+texture = ExtResource("6_4uhsw")
+
+[node name="LightButton3" type="Button" parent="Light3"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -34.0
+offset_top = -28.0
+offset_right = 36.0
+offset_bottom = 44.0
+
+[node name="Back" parent="." instance=ExtResource("7_ljobg")]
+offset_left = 594.0
+offset_top = 325.0
+offset_right = -1094.0
+offset_bottom = -598.0
+texture_normal = ExtResource("8_2eilc")
+
+[node name="Hint" type="Sprite2D" parent="."]
+position = Vector2(19, -1)
+texture = ExtResource("10_xroqo")
+
+[connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="ButtonB" to="." method="_on_button_b_pressed"]
+[connection signal="pressed" from="Light1/LightButton1" to="." method="_on_light_button_1_pressed"]
+[connection signal="pressed" from="Light2/LightButton2" to="." method="_on_light_button_2_pressed"]
+[connection signal="pressed" from="Light3/LightButton3" to="." method="_on_light_button_3_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+
+[editable path="Button1"]
+[editable path="Button2"]
+[editable path="Button3"]
+[editable path="Button4"]
+[editable path="Button5"]
+[editable path="ButtonB"]

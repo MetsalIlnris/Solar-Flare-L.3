@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://bmne8e24fgshy"
+path="res://.godot/imported/washer.dialogue-b2247a45a25fdeeecf262ec6fd1c4071.tres"
+
+[deps]
+
+source_file="res://dialog/world_dialog/washer.dialogue"
+dest_files=["res://.godot/imported/washer.dialogue-b2247a45a25fdeeecf262ec6fd1c4071.tres"]
+
+[params]
+
+defaults=true

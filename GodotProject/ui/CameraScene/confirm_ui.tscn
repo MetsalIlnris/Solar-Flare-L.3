@@ -1,0 +1,109 @@
+[gd_scene load_steps=14 format=3 uid="uid://dv5kldi7cs0ri"]
+
+[ext_resource type="Shader" path="res://ui/CameraScene/dissolve.gdshader" id="1_73xa8"]
+[ext_resource type="Script" path="res://ui/CameraScene/confirm_ui.gd" id="3_r178w"]
+[ext_resource type="Shader" path="res://ui/CameraScene/photo.gdshader" id="4_2y7v6"]
+[ext_resource type="PackedScene" uid="uid://dbcc5afpi4q73" path="res://ui/Buttons/InteractiveButton.tscn" id="4_xekno"]
+[ext_resource type="Theme" uid="uid://dk7bs1nrgjo7f" path="res://dialog/main_balloon/main_balloon.tres" id="6_bd5sl"]
+[ext_resource type="Texture2D" uid="uid://b8gbmqt1rowd2" path="res://asset/UI/camera/yes.png" id="6_bfx1s"]
+[ext_resource type="Texture2D" uid="uid://bov4qrbokymx0" path="res://asset/UI/camera/no.png" id="7_xv1d8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cntv"]
+shader = ExtResource("1_73xa8")
+shader_parameter/threshold = 0.1
+shader_parameter/fadeout = 0.0
+shader_parameter/inter_color = Vector4(1, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ae7g"]
+shader = ExtResource("4_2y7v6")
+shader_parameter/texture_size = Vector2(380, 270)
+shader_parameter/radius = 10.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ueb58"]
+
+[sub_resource type="Animation" id="Animation_55afw"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_bdtx5"]
+resource_name = "pop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/fadeout")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ib57t"]
+_data = {
+"RESET": SubResource("Animation_55afw"),
+"pop": SubResource("Animation_bdtx5")
+}
+
+[node name="Confirm" type="Node2D"]
+material = SubResource("ShaderMaterial_6cntv")
+script = ExtResource("3_r178w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.431373)
+
+[node name="Photo" type="CanvasGroup" parent="."]
+use_parent_material = true
+position = Vector2(960, 400)
+
+[node name="Sample" type="Sprite2D" parent="Photo"]
+material = SubResource("ShaderMaterial_5ae7g")
+use_parent_material = true
+scale = Vector2(0.8, 0.8)
+texture = SubResource("CompressedTexture2D_ueb58")
+
+[node name="Confirm" parent="." instance=ExtResource("4_xekno")]
+offset_left = 661.0
+offset_top = 750.0
+offset_right = 842.0
+offset_bottom = 926.0
+texture_normal = ExtResource("6_bfx1s")
+
+[node name="Cancel" parent="." instance=ExtResource("4_xekno")]
+offset_left = 1055.0
+offset_top = 746.0
+offset_right = 1246.0
+offset_bottom = 926.0
+texture_normal = ExtResource("7_xv1d8")
+
+[node name="Label" type="Label" parent="."]
+use_parent_material = true
+offset_left = 815.0
+offset_top = 694.0
+offset_right = 1115.0
+offset_bottom = 746.0
+theme = ExtResource("6_bd5sl")
+theme_override_font_sizes/font_size = 50
+text = "保存到相册？"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ib57t")
+}
+
+[connection signal="pressed" from="Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Cancel" to="." method="_on_cancel_pressed"]

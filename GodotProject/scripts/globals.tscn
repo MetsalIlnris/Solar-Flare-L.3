@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1wu18dxix1wd"]
+
+[ext_resource type="AudioStream" uid="uid://cs686htfmurf8" path="res://asset/audio/bgm/太阳耀斑见.wav" id="1_440c2"]
+[ext_resource type="Script" path="res://scripts/globals.gd" id="1_g846g"]
+
+[node name="Globals" type="Node"]
+script = ExtResource("1_g846g")
+
+[node name="BgmStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_440c2")
+bus = &"BGM"
+
+[node name="LerpTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="LerpTimer" to="." method="_on_lerp_timer_timeout"]

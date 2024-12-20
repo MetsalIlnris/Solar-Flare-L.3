@@ -1,0 +1,187 @@
+[gd_scene load_steps=18 format=3 uid="uid://4xgamsb5thji"]
+
+[ext_resource type="Script" path="res://scene/sun/sun3/fly_game/fly_character.gd" id="1_jx8v0"]
+[ext_resource type="Texture2D" uid="uid://c53pdo0bdn2l2" path="res://asset/scene/sun3/research/fly/b1.png" id="1_t72rr"]
+[ext_resource type="Texture2D" uid="uid://3xa6fwl6ipie" path="res://asset/scene/sun3/research/fly/b2.png" id="2_rjsi8"]
+[ext_resource type="Texture2D" uid="uid://byylfvv2mfj1o" path="res://asset/scene/sun3/research/fly/b3.png" id="3_lno2v"]
+[ext_resource type="Texture2D" uid="uid://bfgenbbfcb0hh" path="res://asset/scene/sun3/research/fly/b4.png" id="4_r657u"]
+[ext_resource type="Texture2D" uid="uid://cki86a066nmn6" path="res://asset/scene/sun3/research/fly/apple1.png" id="7_ogarc"]
+[ext_resource type="Texture2D" uid="uid://cmttw01utyq3x" path="res://asset/scene/sun3/research/fly/a2.png" id="8_aer80"]
+[ext_resource type="Texture2D" uid="uid://dddb5v588q0m7" path="res://asset/scene/sun3/research/fly/a3.png" id="9_vhmto"]
+[ext_resource type="Texture2D" uid="uid://clye28a7gbfvl" path="res://asset/scene/sun3/research/fly/a4.png" id="10_3nfym"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h5dev"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t72rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rjsi8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lno2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r657u")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_s0d53"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bay8l"]
+resource_name = "hurt"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1hi50"]
+_data = {
+"RESET": SubResource("Animation_s0d53"),
+"hurt": SubResource("Animation_bay8l")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fplq6"]
+radius = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mllqf"]
+size = Vector2(87, 752)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41x3h"]
+size = Vector2(1513, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_re1n6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ogarc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_aer80")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_vhmto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3nfym")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[node name="FlyCharacter" type="Node2D"]
+script = ExtResource("1_jx8v0")
+
+[node name="Barriers" type="Node2D" parent="."]
+
+[node name="FlyCharacter" type="CharacterBody2D" parent="."]
+collision_mask = 18
+
+[node name="BodyAnim" type="AnimatedSprite2D" parent="FlyCharacter"]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_h5dev")
+autoplay = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FlyCharacter"]
+libraries = {
+"": SubResource("AnimationLibrary_1hi50")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyCharacter"]
+shape = SubResource("CircleShape2D_fplq6")
+
+[node name="HurtTimer" type="Timer" parent="FlyCharacter"]
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Marker2D" type="Marker2D" parent="Timer"]
+position = Vector2(1604, 28)
+
+[node name="StringTimer" type="Timer" parent="Timer"]
+wait_time = 12.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(-340.5, -2)
+shape = SubResource("RectangleShape2D_mllqf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(1315, 8)
+shape = SubResource("RectangleShape2D_mllqf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(472, -261)
+shape = SubResource("RectangleShape2D_41x3h")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(484, 274)
+shape = SubResource("RectangleShape2D_41x3h")
+
+[node name="FlyCharacter2" type="CharacterBody2D" parent="."]
+position = Vector2(0, 550)
+collision_mask = 18
+
+[node name="BodyAnim" type="AnimatedSprite2D" parent="FlyCharacter2"]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_re1n6")
+autoplay = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FlyCharacter2"]
+libraries = {
+"": SubResource("AnimationLibrary_1hi50")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyCharacter2"]
+shape = SubResource("CircleShape2D_fplq6")
+
+[node name="HurtTimer" type="Timer" parent="FlyCharacter2"]
+one_shot = true
+
+[connection signal="timeout" from="FlyCharacter/HurtTimer" to="." method="_on_hurt_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer/StringTimer" to="." method="_on_string_timer_timeout"]
+[connection signal="timeout" from="FlyCharacter2/HurtTimer" to="." method="_on_hurt2_timer_timeout"]

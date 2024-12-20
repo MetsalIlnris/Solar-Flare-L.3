@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj2idp0f0nyuj"]
+
+[ext_resource type="Texture2D" uid="uid://cdv4ifv22mev0" path="res://asset/scene/sun3/engine.png" id="1_aqtgc"]
+[ext_resource type="Texture2D" uid="uid://cbp1kdp4jk0m3" path="res://asset/scene/sun3/leaf.png" id="1_kfog8"]
+[ext_resource type="PackedScene" uid="uid://cfqfrs85b36ex" path="res://scene/Components/RotateComponent.tscn" id="2_j7nmm"]
+
+[node name="Engine" type="Sprite2D"]
+position = Vector2(942, 642)
+texture = ExtResource("1_aqtgc")
+
+[node name="Leaf" type="Node2D" parent="."]
+position = Vector2(-3, -140)
+scale = Vector2(1, 0.4)
+
+[node name="Leaf" type="Node2D" parent="Leaf"]
+position = Vector2(1, 0)
+
+[node name="RotateComponent" parent="Leaf/Leaf" instance=ExtResource("2_j7nmm")]
+rotate_speed = 0.02
+
+[node name="Sprite2D" type="Sprite2D" parent="Leaf/Leaf"]
+modulate = Color(0.137255, 0.352941, 0.607843, 1)
+position = Vector2(-4, -12.5)
+texture = ExtResource("1_kfog8")

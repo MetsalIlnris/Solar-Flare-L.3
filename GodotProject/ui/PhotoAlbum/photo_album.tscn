@@ -1,0 +1,207 @@
+[gd_scene load_steps=25 format=3 uid="uid://dw34k8efr625u"]
+
+[ext_resource type="Script" path="res://ui/PhotoAlbum/photo_album.gd" id="1_4eq0b"]
+[ext_resource type="Texture2D" uid="uid://nn5fajcny3ux" path="res://asset/UI/photo album/background of album.png" id="1_pi37u"]
+[ext_resource type="Script" path="res://ui/PhotoAlbum/Photos.gd" id="2_26vyn"]
+[ext_resource type="Texture2D" uid="uid://ci4eq5otf2jm2" path="res://asset/UI/photo album/frame.png" id="2_ox1rn"]
+[ext_resource type="PackedScene" uid="uid://ccp5ejc8l2sc2" path="res://ui/PhotoAlbum/photo.tscn" id="2_r4jjo"]
+[ext_resource type="Texture2D" uid="uid://b01iqswbclals" path="res://asset/UI/photo album/album.png" id="3_7w06n"]
+[ext_resource type="Texture2D" uid="uid://q83fce6w7l6v" path="res://asset/UI/photo album/magnet.png" id="4_vrxu1"]
+[ext_resource type="Texture2D" uid="uid://4wics0th1mya" path="res://asset/UI/photo album/bg/highway.png" id="5_uvyiu"]
+[ext_resource type="Theme" uid="uid://bc3ohqpp1sfg3" path="res://asset/art/transparency_theme.tres" id="6_dv4nu"]
+[ext_resource type="PackedScene" uid="uid://dbcc5afpi4q73" path="res://ui/Buttons/InteractiveButton.tscn" id="9_bfkfh"]
+[ext_resource type="Texture2D" uid="uid://us3xdruqji3a" path="res://asset/UI/photo album/pageback.png" id="10_w3nru"]
+[ext_resource type="Texture2D" uid="uid://dmqo4qkvwj0i4" path="res://asset/UI/photo album/pageforward.png" id="11_eehja"]
+[ext_resource type="PackedScene" uid="uid://bxl2s4glp1lts" path="res://ui/PhotoAlbum/photo_detail.tscn" id="15_bxd74"]
+[ext_resource type="Shader" path="res://ui/CameraScene/dissolve.gdshader" id="15_ihaop"]
+[ext_resource type="Texture2D" uid="uid://b6u1ttaqld3fu" path="res://asset/UI/photo album/close.png" id="16_4bsob"]
+[ext_resource type="PackedScene" uid="uid://chyig63qfsrfr" path="res://ui/PhotoAlbum/background_bar.tscn" id="16_jd55i"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3hknv"]
+load_path = "res://.godot/imported/photo1.png-c6dc2df31aefff5cdcfe9c113a7950a1.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cfb12"]
+load_path = "res://.godot/imported/photo3.png-d6569a85e1bde1c1e30bbab306bf979a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_btk4h"]
+load_path = "res://.godot/imported/photo2.png-f422bc8d8ebc486dcab77f40e5e5338f.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6ty6"]
+size = Vector2(81, 458)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfhn8"]
+size = Vector2(91, 462)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fshbk"]
+shader = ExtResource("15_ihaop")
+shader_parameter/threshold = 0.1
+shader_parameter/fadeout = 0.0
+shader_parameter/inter_color = Vector4(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_vkq3c"]
+resource_name = "dissolve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Close:material:shader_parameter/fadeout")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4enos"]
+_data = {
+"dissolve": SubResource("Animation_vkq3c")
+}
+
+[node name="PhotoAlbum" type="CanvasLayer"]
+layer = 15
+script = ExtResource("1_4eq0b")
+
+[node name="Album" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_pi37u")
+
+[node name="CloseButton" parent="Album" instance=ExtResource("9_bfkfh")]
+offset_left = 766.0
+offset_top = -112.0
+offset_right = -1021.0
+offset_bottom = -976.0
+texture_normal = ExtResource("4_vrxu1")
+
+[node name="Background" type="Sprite2D" parent="Album"]
+texture = ExtResource("5_uvyiu")
+
+[node name="BgButton" type="Button" parent="Album/Background"]
+offset_left = -787.0
+offset_top = -414.0
+offset_right = 736.0
+offset_bottom = 360.0
+theme = ExtResource("6_dv4nu")
+
+[node name="Photos" type="Node2D" parent="Album"]
+unique_name_in_owner = true
+script = ExtResource("2_26vyn")
+
+[node name="PhotoExample" parent="Album/Photos" instance=ExtResource("2_r4jjo")]
+visible = false
+offset_left = 2000.0
+offset_top = -143.0
+offset_right = 2780.0
+offset_bottom = 397.0
+texture_normal = SubResource("CompressedTexture2D_3hknv")
+metadata/_edit_use_anchors_ = true
+
+[node name="PhotoSlot0" type="Marker2D" parent="Album/Photos"]
+position = Vector2(-600, 0)
+
+[node name="Photo" parent="Album/Photos/PhotoSlot0" instance=ExtResource("2_r4jjo")]
+offset_left = -211.0
+offset_top = -139.0
+offset_right = 569.0
+offset_bottom = 401.0
+texture_normal = SubResource("CompressedTexture2D_3hknv")
+metadata/_edit_use_anchors_ = true
+
+[node name="PhotoSlot1" type="Marker2D" parent="Album/Photos"]
+position = Vector2(-220, 4)
+
+[node name="Photo" parent="Album/Photos/PhotoSlot1" instance=ExtResource("2_r4jjo")]
+offset_left = -197.0
+offset_top = -134.0
+offset_right = 583.0
+offset_bottom = 406.0
+texture_normal = SubResource("CompressedTexture2D_cfb12")
+metadata/_edit_use_anchors_ = true
+
+[node name="PhotoSlot2" type="Marker2D" parent="Album/Photos"]
+position = Vector2(168, 5)
+
+[node name="Photo" parent="Album/Photos/PhotoSlot2" instance=ExtResource("2_r4jjo")]
+offset_left = -202.0
+offset_top = -140.0
+offset_right = 578.0
+offset_bottom = 400.0
+texture_normal = SubResource("CompressedTexture2D_btk4h")
+metadata/_edit_use_anchors_ = true
+
+[node name="PhotoSlot3" type="Marker2D" parent="Album/Photos"]
+position = Vector2(535, 2)
+
+[node name="Photo" parent="Album/Photos/PhotoSlot3" instance=ExtResource("2_r4jjo")]
+offset_left = -202.0
+offset_top = -140.0
+offset_right = 578.0
+offset_bottom = 400.0
+texture_normal = SubResource("CompressedTexture2D_btk4h")
+metadata/_edit_use_anchors_ = true
+
+[node name="DragAreas" type="Node2D" parent="Album/Photos"]
+
+[node name="Left" type="Area2D" parent="Album/Photos/DragAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Album/Photos/DragAreas/Left"]
+position = Vector2(-886.5, 200)
+shape = SubResource("RectangleShape2D_r6ty6")
+
+[node name="DragLeftTimer" type="Timer" parent="Album/Photos/DragAreas/Left"]
+
+[node name="Right" type="Area2D" parent="Album/Photos/DragAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Album/Photos/DragAreas/Right"]
+position = Vector2(896.5, 196)
+shape = SubResource("RectangleShape2D_xfhn8")
+
+[node name="DragRightTimer" type="Timer" parent="Album/Photos/DragAreas/Right"]
+
+[node name="Frame" type="Sprite2D" parent="Album"]
+texture = ExtResource("2_ox1rn")
+
+[node name="Album" type="Sprite2D" parent="Album"]
+texture = ExtResource("3_7w06n")
+
+[node name="BackButton" parent="Album" instance=ExtResource("9_bfkfh")]
+offset_left = -937.0
+offset_top = 213.0
+offset_right = -2726.0
+offset_bottom = -676.0
+texture_normal = ExtResource("10_w3nru")
+
+[node name="ForwardButton" parent="Album" instance=ExtResource("9_bfkfh")]
+offset_left = 732.0
+offset_top = 244.0
+offset_right = -1067.0
+offset_bottom = -646.0
+texture_normal = ExtResource("11_eehja")
+
+[node name="BackgroundBar" parent="." instance=ExtResource("16_jd55i")]
+visible = false
+
+[node name="Close" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fshbk")
+position = Vector2(960, 540)
+texture = ExtResource("16_4bsob")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4enos")
+}
+
+[node name="PhotoDetail" parent="." instance=ExtResource("15_bxd74")]
+visible = false
+
+[connection signal="pressed" from="Album/CloseButton" to="." method="_on_back_button_2_pressed"]
+[connection signal="pressed" from="Album/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="Album/Background/BgButton" to="." method="_on_bg_button_pressed"]
+[connection signal="area_entered" from="Album/Photos/DragAreas/Left" to="Album/Photos" method="_on_left_area_entered"]
+[connection signal="area_exited" from="Album/Photos/DragAreas/Left" to="Album/Photos" method="_on_left_area_exited"]
+[connection signal="timeout" from="Album/Photos/DragAreas/Left/DragLeftTimer" to="Album/Photos" method="_on_drag_left_timer_timeout"]
+[connection signal="area_entered" from="Album/Photos/DragAreas/Right" to="Album/Photos" method="_on_right_area_entered"]
+[connection signal="area_exited" from="Album/Photos/DragAreas/Right" to="Album/Photos" method="_on_right_area_exited"]
+[connection signal="timeout" from="Album/Photos/DragAreas/Right/DragRightTimer" to="Album/Photos" method="_on_drag_right_timer_timeout"]
+[connection signal="pressed" from="Album/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Album/ForwardButton" to="." method="_on_forward_button_pressed"]

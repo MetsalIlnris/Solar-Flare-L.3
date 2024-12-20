@@ -1,0 +1,162 @@
+[gd_scene load_steps=17 format=3 uid="uid://cl8bh1j5tjbnr"]
+
+[ext_resource type="Script" path="res://scene/Camera/Camera.gd" id="1_yrvaf"]
+[ext_resource type="Shader" path="res://scene/Camera/camera.gdshader" id="2_m4c14"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kw5o0"]
+shader = ExtResource("2_m4c14")
+shader_parameter/grey_ratio = Vector3(0.6, 1, 0.3)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dl8is"]
+
+[sub_resource type="Animation" id="Animation_xelvj"]
+resource_name = "fade"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurtainLayer/curtain:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_37254"]
+_data = {
+"fade": SubResource("Animation_xelvj")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7onim"]
+load_path = "res://.godot/imported/过场动画_00000.png-e39bf613b3cdd4fa045e1cb47a567459.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_reskd"]
+load_path = "res://.godot/imported/过场动画_00001.png-83e2ef972e8bf68ed418f9734551bff3.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ymeg"]
+load_path = "res://.godot/imported/过场动画_00002.png-1ec86b14a738f32c5e8a90103e2911f0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n2b5f"]
+load_path = "res://.godot/imported/过场动画_00003.png-59a97e704e438758f2ff092e6a128260.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pjyl3"]
+load_path = "res://.godot/imported/过场动画_00004.png-9248e5b15ed4590bc3d2fac98346c65e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o0tb3"]
+load_path = "res://.godot/imported/过场动画_00005.png-84d193a14da6a3bc81a2f3806a2b6137.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_05cdo"]
+load_path = "res://.godot/imported/过场动画_00006.png-55d4a724a10533a188b7e8d97d9b28f3.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v5bvj"]
+load_path = "res://.godot/imported/过场动画_00007.png-a0ce00919abeebe471456bfd2860128e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ti6pm"]
+load_path = "res://.godot/imported/过场动画_00008.png-fc197c884b4bdbff08f7c3012fd25980.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hiopv"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_7onim")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_reskd")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_8ymeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_n2b5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_pjyl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_o0tb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_05cdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_v5bvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ti6pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ti6pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ti6pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ti6pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ti6pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ti6pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ti6pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ti6pm")
+}],
+"loop": false,
+"name": &"fade",
+"speed": 20.0
+}]
+
+[node name="Camera" type="Camera2D" groups=["camera"]]
+z_index = 10
+ignore_rotation = false
+script = ExtResource("1_yrvaf")
+
+[node name="FilterLayer" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kw5o0")
+scale = Vector2(1920, 1080)
+texture = SubResource("CanvasTexture_dl8is")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_37254")
+}
+
+[node name="ShakeTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="Animation" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+z_index = 20
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_hiopv")
+autoplay = "default"
+
+[node name="CurtainLayer" type="CanvasLayer" parent="."]
+layer = 45
+
+[node name="curtain" type="ColorRect" parent="CurtainLayer"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -71.0
+offset_top = -173.0
+offset_right = 2096.0
+offset_bottom = 1241.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

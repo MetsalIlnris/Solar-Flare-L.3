@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://t0twhvsitcav"]
+
+[ext_resource type="Script" path="res://scene/sun/sun1/ball.gd" id="1_sybmq"]
+[ext_resource type="Texture2D" uid="uid://dtcgh0vcaev5g" path="res://asset/scene/sun/tower/ball/1.png" id="3_mwchf"]
+[ext_resource type="Texture2D" uid="uid://ddmsidfmlhbc3" path="res://asset/scene/sun/tower/ball/2.png" id="4_ceqvc"]
+[ext_resource type="Texture2D" uid="uid://cqgeprdk1n3iu" path="res://asset/scene/sun/tower/ball/3.png" id="5_1si4y"]
+[ext_resource type="Texture2D" uid="uid://cqn27mn45mnx7" path="res://asset/scene/sun/tower/ball/4.png" id="6_j0mke"]
+[ext_resource type="Texture2D" uid="uid://dslfi1f360x56" path="res://asset/scene/sun/tower/ball/5.png" id="7_4tak1"]
+[ext_resource type="Texture2D" uid="uid://coyphlt0qf20" path="res://asset/scene/sun/tower/ball/6.png" id="8_2mpop"]
+[ext_resource type="Texture2D" uid="uid://c3m1ix0ur26xk" path="res://asset/scene/sun/tower/ball/7.png" id="9_lmq5u"]
+[ext_resource type="PackedScene" uid="uid://bk480uvttabo" path="res://ui/Interactive/InteractArea.tscn" id="10_7ph0g"]
+[ext_resource type="Texture2D" uid="uid://b8leybkfdotc6" path="res://asset/scene/sun/tower/ball/8.png" id="10_a5bor"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4sig"]
+radius = 268.57
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wun2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mwchf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mwchf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ceqvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1si4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j0mke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4tak1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2mpop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lmq5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a5bor")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[node name="Ball" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_sybmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -130)
+shape = SubResource("CircleShape2D_e4sig")
+
+[node name="BallNormal" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wun2c")
+animation = &"open"
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+
+[node name="InteractArea" parent="." instance=ExtResource("10_7ph0g")]
+position = Vector2(-208, 9)
+monitoring = false
+monitorable = false
+scene = "sun"
+label = "ball_enter"
+tip = "进入"
+scene_func = true
+
+[node name="ShakeTimer" type="Timer" parent="."]
+one_shot = true

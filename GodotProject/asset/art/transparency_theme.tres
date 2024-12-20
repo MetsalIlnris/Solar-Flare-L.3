@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bc3ohqpp1sfg3"]
+
+[ext_resource type="FontFile" uid="uid://vlrjolv1it61" path="res://asset/fonts/XiaolaiMonoSC-Regular.ttf" id="1_v1b5k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mjj2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvd5g"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjaww"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6xsl"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dau5x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4op5a"]
+
+[resource]
+default_font = ExtResource("1_v1b5k")
+default_font_size = 32
+Button/font_sizes/font_size = 35
+Button/fonts/font = ExtResource("1_v1b5k")
+Button/styles/disabled = SubResource("StyleBoxFlat_5mjj2")
+Button/styles/focus = SubResource("StyleBoxFlat_wvd5g")
+Button/styles/hover = SubResource("StyleBoxFlat_xjaww")
+Button/styles/normal = SubResource("StyleBoxFlat_p6xsl")
+Button/styles/pressed = SubResource("StyleBoxFlat_dau5x")
+Panel/styles/panel = SubResource("StyleBoxEmpty_4op5a")

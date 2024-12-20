@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://ch077xf4ciy1s"]
+
+[ext_resource type="Script" path="res://ui/Font/digit.gd" id="1_2mooy"]
+[ext_resource type="Texture2D" uid="uid://bjqctjj1f81wt" path="res://asset/UI/font/digit/0.png" id="2_pepqq"]
+[ext_resource type="Texture2D" uid="uid://bhgqwpyh7ssbq" path="res://asset/UI/font/digit/1.png" id="3_q4w4m"]
+[ext_resource type="Texture2D" uid="uid://bc7yifj2qbshy" path="res://asset/UI/font/digit/2.png" id="4_vsyqn"]
+[ext_resource type="Texture2D" uid="uid://cmq0ygwixkpbx" path="res://asset/UI/font/digit/3.png" id="5_um8dc"]
+[ext_resource type="Texture2D" uid="uid://cequ2rwt2acsd" path="res://asset/UI/font/digit/4.png" id="6_c5m7e"]
+[ext_resource type="Texture2D" uid="uid://cchktvc8q2acj" path="res://asset/UI/font/digit/5.png" id="7_oom4n"]
+[ext_resource type="Texture2D" uid="uid://33o20rve4hrj" path="res://asset/UI/font/digit/6.png" id="8_kq2u5"]
+[ext_resource type="Texture2D" uid="uid://k6unqqv0ajp6" path="res://asset/UI/font/digit/7.png" id="9_frikw"]
+[ext_resource type="Texture2D" uid="uid://yq3qvth4jh2p" path="res://asset/UI/font/digit/8.png" id="10_4xox8"]
+[ext_resource type="Texture2D" uid="uid://dm3e7fpe4py3v" path="res://asset/UI/font/digit/9.png" id="11_53ll2"]
+
+[node name="Digit" type="Node2D"]
+script = ExtResource("1_2mooy")
+
+[node name="Templates" type="Node2D" parent="."]
+
+[node name="0" type="Sprite2D" parent="Templates"]
+position = Vector2(-1, 1)
+rotation = -0.0523599
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_pepqq")
+
+[node name="1" type="Sprite2D" parent="Templates"]
+visible = false
+position = Vector2(-1, 1)
+texture = ExtResource("3_q4w4m")
+
+[node name="2" type="Sprite2D" parent="Templates"]
+visible = false
+position = Vector2(-1, 1)
+texture = ExtResource("4_vsyqn")
+
+[node name="3" type="Sprite2D" parent="Templates"]
+visible = false
+position = Vector2(-1, 1)
+texture = ExtResource("5_um8dc")
+
+[node name="4" type="Sprite2D" parent="Templates"]
+visible = false
+position = Vector2(-1, 1)
+texture = ExtResource("6_c5m7e")
+
+[node name="5" type="Sprite2D" parent="Templates"]
+visible = false
+position = Vector2(-1, 1)
+scale = Vector2(0.93, 0.93)
+texture = ExtResource("7_oom4n")
+
+[node name="6" type="Sprite2D" parent="Templates"]
+visible = false
+position = Vector2(-1, 1)
+texture = ExtResource("8_kq2u5")
+
+[node name="7" type="Sprite2D" parent="Templates"]
+visible = false
+position = Vector2(-1, 1)
+texture = ExtResource("9_frikw")
+
+[node name="8" type="Sprite2D" parent="Templates"]
+visible = false
+position = Vector2(-1, 1)
+rotation = -0.0523599
+texture = ExtResource("10_4xox8")
+
+[node name="9" type="Sprite2D" parent="Templates"]
+visible = false
+position = Vector2(-1, 1)
+rotation = -0.0872665
+texture = ExtResource("11_53ll2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+
+[node name="Canvas" type="Node2D" parent="."]

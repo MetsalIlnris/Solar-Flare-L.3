@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://blevfe0ojycgx"]
+
+[ext_resource type="PackedScene" uid="uid://cb3aftxrhs2ll" path="res://character/character.tscn" id="1_uxdsu"]
+[ext_resource type="Script" path="res://character/yan/yan.gd" id="2_2qwlm"]
+[ext_resource type="SpriteFrames" uid="uid://d0451pvqpm65y" path="res://character/yan/yan_dressed_anime.tres" id="3_ko1fa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t1gf1"]
+radius = 37.5
+height = 371.0
+
+[node name="yan" groups=["yan"] instance=ExtResource("1_uxdsu")]
+script = ExtResource("2_2qwlm")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(4.5, -187.5)
+shape = SubResource("CapsuleShape2D_t1gf1")
+
+[node name="MainAnim" parent="." index="1"]
+position = Vector2(-11, -238)
+sprite_frames = ExtResource("3_ko1fa")
+animation = &"walk"
+autoplay = ""
+frame_progress = 0.377621

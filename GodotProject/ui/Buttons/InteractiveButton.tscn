@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbcc5afpi4q73"]
+
+[ext_resource type="Texture2D" uid="uid://bfk747sk0hi1l" path="res://asset/UI/camera/expression16180.png" id="1_fjw0a"]
+[ext_resource type="Script" path="res://ui/Buttons/InteractiveButton.gd" id="1_o70t3"]
+
+[sub_resource type="BitMap" id="BitMap_xab86"]
+
+[node name="InteractiveButton" type="TextureButton"]
+use_parent_material = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1666.0
+offset_bottom = -788.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_fjw0a")
+texture_click_mask = SubResource("BitMap_xab86")
+script = ExtResource("1_o70t3")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

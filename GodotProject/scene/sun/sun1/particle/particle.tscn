@@ -1,0 +1,102 @@
+[gd_scene load_steps=14 format=3 uid="uid://d0hob7brf3aao"]
+
+[ext_resource type="Script" path="res://scene/sun/sun1/particle/particle.gd" id="1_uqq6u"]
+[ext_resource type="Texture2D" uid="uid://t2c3afx0txw1" path="res://asset/scene/sun/particle/5.png" id="2_uvuqc"]
+[ext_resource type="Texture2D" uid="uid://bm100uk834iu2" path="res://asset/scene/sun/particle/7.png" id="4_rhj4v"]
+[ext_resource type="Texture2D" uid="uid://3rarhyw01v7p" path="res://asset/scene/sun/particle/4.png" id="5_h5qwq"]
+[ext_resource type="Texture2D" uid="uid://dpf8eq8g64eln" path="res://asset/scene/sun/particle/6.png" id="7_m3481"]
+[ext_resource type="PackedScene" uid="uid://bcsgexdd27iia" path="res://scene/Components/ShakeComponent.tscn" id="9_edk5x"]
+[ext_resource type="Texture2D" uid="uid://dndommuxqnesv" path="res://asset/scene/sun/particle/3.png" id="10_077yu"]
+[ext_resource type="AudioStream" uid="uid://by2spp5n16bc4" path="res://asset/audio/fx/sun/cat.mp3" id="10_g32wj"]
+[ext_resource type="Texture2D" uid="uid://qaokgl156ock" path="res://asset/scene/sun/particle/2.png" id="11_6p6x0"]
+[ext_resource type="Texture2D" uid="uid://d3y5yv4f1jbnu" path="res://asset/scene/sun/particle/1.png" id="12_mhmrp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mp4mw"]
+radius = 30.801
+
+[sub_resource type="Animation" id="Animation_kvqgc"]
+resource_name = "shake"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_soo6s"]
+_data = {
+"shake": SubResource("Animation_kvqgc")
+}
+
+[node name="ParticleExample" type="StaticBody2D"]
+script = ExtResource("1_uqq6u")
+
+[node name="Images" type="Node2D" parent="."]
+
+[node name="7" type="Sprite2D" parent="Images"]
+visible = false
+position = Vector2(-2, -1)
+texture = ExtResource("4_rhj4v")
+
+[node name="6" type="Sprite2D" parent="Images"]
+visible = false
+position = Vector2(-2, -1)
+texture = ExtResource("7_m3481")
+
+[node name="5" type="Sprite2D" parent="Images"]
+visible = false
+position = Vector2(-1, 0)
+texture = ExtResource("2_uvuqc")
+
+[node name="4" type="Sprite2D" parent="Images"]
+visible = false
+position = Vector2(-3, -1)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_h5qwq")
+
+[node name="FeTimer" type="Timer" parent="Images/4"]
+wait_time = 0.5
+one_shot = true
+
+[node name="3" type="Sprite2D" parent="Images"]
+visible = false
+position = Vector2(-1, 0)
+scale = Vector2(0.805, 0.805)
+texture = ExtResource("10_077yu")
+
+[node name="2" type="Sprite2D" parent="Images"]
+visible = false
+position = Vector2(0, 1)
+texture = ExtResource("11_6p6x0")
+
+[node name="1" type="Sprite2D" parent="Images"]
+visible = false
+position = Vector2(0, 1)
+texture = ExtResource("12_mhmrp")
+
+[node name="ShakeComponent" parent="Images" instance=ExtResource("9_edk5x")]
+amplitude = 0
+frequency = 60
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mp4mw")
+
+[node name="Button" type="Button" parent="CollisionShape2D"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -36.0
+offset_top = -35.0
+offset_right = 39.0
+offset_bottom = 37.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 40.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_soo6s")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_g32wj")
+bus = &"SFX"
+
+[connection signal="timeout" from="Images/4/FeTimer" to="." method="_on_fe_timer_timeout"]
+[connection signal="button_down" from="CollisionShape2D/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="CollisionShape2D/Button" to="." method="_on_button_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

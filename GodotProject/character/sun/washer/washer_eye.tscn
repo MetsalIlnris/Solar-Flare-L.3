@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhppn0x3ldrgl"]
+
+[ext_resource type="Script" path="res://character/sun/washer/eye.gd" id="1_wxt6w"]
+[ext_resource type="Texture2D" uid="uid://vbi1dmc4unb8" path="res://asset/character/sun/washer/eye.png" id="2_k7c18"]
+[ext_resource type="Texture2D" uid="uid://b7d81wu7m8wdh" path="res://asset/character/sun/washer/eye1.png" id="3_7ec5f"]
+
+[node name="Eye" type="Node2D"]
+script = ExtResource("1_wxt6w")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Close" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(16, 66)
+texture = ExtResource("2_k7c18")
+
+[node name="Open" type="Sprite2D" parent="."]
+position = Vector2(16, 72)
+texture = ExtResource("3_7ec5f")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

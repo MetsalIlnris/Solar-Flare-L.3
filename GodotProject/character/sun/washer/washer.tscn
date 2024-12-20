@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://2ixaiviu85yc"]
+
+[ext_resource type="PackedScene" uid="uid://cb3aftxrhs2ll" path="res://character/character.tscn" id="1_sme23"]
+[ext_resource type="Script" path="res://character/sun/washer/washer.gd" id="2_4x0q5"]
+[ext_resource type="SpriteFrames" uid="uid://cjrvinuhb363t" path="res://character/sun/washer/washer_anime.tres" id="3_s7twk"]
+[ext_resource type="PackedScene" uid="uid://bhppn0x3ldrgl" path="res://character/sun/washer/washer_eye.tscn" id="4_ek7py"]
+[ext_resource type="Script" path="res://character/sun/washer/WashState.gd" id="5_ewfms"]
+[ext_resource type="Texture2D" uid="uid://d357cpypjkqie" path="res://asset/scene/sun/particle/UI/dialog2.png" id="6_hy2v8"]
+[ext_resource type="PackedScene" uid="uid://x7vd77yi3s7j" path="res://scene/Components/BlinkComponent.tscn" id="7_7lr0p"]
+[ext_resource type="PackedScene" uid="uid://bk480uvttabo" path="res://ui/Interactive/InteractArea.tscn" id="16_12xdl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qux1i"]
+radius = 118.5
+height = 303.88
+
+[node name="Wahser" instance=ExtResource("1_sme23")]
+script = ExtResource("2_4x0q5")
+speed = 100.0
+run_speed = 120.0
+standby_distance = 400
+walk_distance = 800
+close_distance = 200
+can_run = false
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-6.5, -120.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qux1i")
+
+[node name="MainAnim" parent="." index="1"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-12, -131)
+sprite_frames = ExtResource("3_s7twk")
+animation = &"wash"
+autoplay = "dead"
+
+[node name="Eye" parent="MainAnim" index="0" instance=ExtResource("4_ek7py")]
+visible = false
+
+[node name="SleepAnim" type="AnimatedSprite2D" parent="MainAnim" index="1"]
+use_parent_material = true
+position = Vector2(0, -1)
+sprite_frames = ExtResource("3_s7twk")
+animation = &"run"
+autoplay = "dead"
+
+[node name="WashState" type="Node" parent="StateMachines" index="5"]
+script = ExtResource("5_ewfms")
+
+[node name="WanderTimer" type="Timer" parent="StateMachines/WashState" index="0"]
+wait_time = 10.0
+one_shot = true
+
+[node name="WashTimer" type="Timer" parent="StateMachines/WashState" index="1"]
+wait_time = 10.0
+one_shot = true
+
+[node name="InteractArea" parent="." index="3" instance=ExtResource("16_12xdl")]
+position = Vector2(-1, 1)
+scale = Vector2(0.92, 0.92)
+dialog = false
+scene = "washer"
+label = "talk"
+tip = "激活"
+parent_func = true
+label_height = -100
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(-2.17391, -107.609)
+
+[node name="Dialog2" type="Sprite2D" parent="." index="4"]
+visible = false
+position = Vector2(93, -162)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("6_hy2v8")
+flip_h = true
+
+[node name="Label" type="Label" parent="Dialog2" index="0"]
+offset_left = -54.0
+offset_top = -132.0
+offset_right = 94.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0.345098, 1)
+theme_override_font_sizes/font_size = 110
+text = ". . ."
+horizontal_alignment = 1
+
+[node name="BlinkComponent" parent="Dialog2" index="1" instance=ExtResource("7_7lr0p")]
+blink_speed = 2.0
+
+[connection signal="timeout" from="StateMachines/WashState/WashTimer" to="StateMachines/WashState" method="_on_wash_timer_timeout"]
+
+[editable path="InteractArea"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfqfrs85b36ex"]
+
+[ext_resource type="Script" path="res://scene/Components/RotateComponent.gd" id="1_tumdw"]
+
+[node name="RotateComponent" type="Node"]
+script = ExtResource("1_tumdw")

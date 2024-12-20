@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmy3qm1wjta1v"]
+
+[ext_resource type="Script" path="res://character/sun/rubbish/rubbish.gd" id="1_rw0y4"]
+[ext_resource type="Texture2D" uid="uid://l86yk5bu4kxg" path="res://asset/character/sun/washer/rubbish/16180cookie.png" id="2_tcaw2"]
+[ext_resource type="Texture2D" uid="uid://cf8yeh7r54l5" path="res://asset/character/sun/washer/rubbish/banana.png" id="3_d8qmy"]
+[ext_resource type="Texture2D" uid="uid://dfcmdwy33h00x" path="res://asset/character/sun/washer/rubbish/cola.png" id="4_lvug8"]
+[ext_resource type="Texture2D" uid="uid://dlh5jhn46c377" path="res://asset/character/sun/washer/rubbish/littleapple.png" id="5_hbg23"]
+[ext_resource type="Texture2D" uid="uid://bs3ou63nddjwq" path="res://asset/character/sun/washer/rubbish/mountain.png" id="6_kgand"]
+[ext_resource type="Texture2D" uid="uid://dqiil54to2cu6" path="res://asset/character/sun/washer/rubbish/stars.png" id="7_utm1o"]
+[ext_resource type="Texture2D" uid="uid://bi82eobidiwn4" path="res://asset/character/sun/washer/rubbish/web.png" id="8_hnheq"]
+[ext_resource type="PackedScene" uid="uid://bk480uvttabo" path="res://ui/Interactive/InteractArea.tscn" id="9_0gg5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uggtr"]
+size = Vector2(74.75, 183.5)
+
+[node name="Rubbish" type="Node2D" groups=["rubbish"]]
+z_index = -1
+script = ExtResource("1_rw0y4")
+
+[node name="Image" type="Node2D" parent="."]
+
+[node name="16180Cookie" type="Sprite2D" parent="Image"]
+position = Vector2(-3, -27.105)
+texture = ExtResource("2_tcaw2")
+
+[node name="Banana" type="Sprite2D" parent="Image"]
+visible = false
+position = Vector2(-3, -25)
+texture = ExtResource("3_d8qmy")
+
+[node name="Cola" type="Sprite2D" parent="Image"]
+visible = false
+position = Vector2(-4, -32)
+texture = ExtResource("4_lvug8")
+
+[node name="Littleapple" type="Sprite2D" parent="Image"]
+visible = false
+position = Vector2(2, -23)
+texture = ExtResource("5_hbg23")
+
+[node name="Mountain" type="Sprite2D" parent="Image"]
+visible = false
+position = Vector2(-2, -84)
+texture = ExtResource("6_kgand")
+
+[node name="Stars" type="Sprite2D" parent="Image"]
+visible = false
+position = Vector2(3, -63)
+texture = ExtResource("7_utm1o")
+
+[node name="Web" type="Sprite2D" parent="Image"]
+visible = false
+position = Vector2(-4, -80)
+texture = ExtResource("8_hnheq")
+
+[node name="InteractArea" parent="." instance=ExtResource("9_0gg5l")]
+position = Vector2(-1, -50)
+dialog = false
+scene = "rubbish"
+label = "check"
+tip = "检查"
+parent_func = true
+
+[node name="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(0, 52)
+shape = SubResource("RectangleShape2D_uggtr")
+
+[node name="TipLabel" parent="InteractArea/CollisionShape2D" index="0"]
+modulate = Color(1, 1, 1, 0)
+offset_top = -180.0
+offset_bottom = -67.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="InteractArea"]

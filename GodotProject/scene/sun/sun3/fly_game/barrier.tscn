@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds3ux4pjj18kf"]
+
+[ext_resource type="Script" path="res://scene/sun/sun3/fly_game/barrier.gd" id="1_4ik7a"]
+[ext_resource type="Texture2D" uid="uid://bbxlx16s3wm4q" path="res://asset/scene/sun3/research/fly/string.png" id="2_lpl3b"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pplgm"]
+friction = 0.0
+bounce = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrke1"]
+size = Vector2(500, 50)
+
+[node name="Barrier" type="RigidBody2D" groups=["barrier"]]
+collision_layer = 2
+collision_mask = 33
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_pplgm")
+gravity_scale = 0.0
+angular_damp_mode = 1
+script = ExtResource("1_4ik7a")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(1, 10)
+texture = ExtResource("2_lpl3b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xrke1")

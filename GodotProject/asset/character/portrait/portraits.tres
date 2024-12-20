@@ -1,0 +1,59 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://b7bsdsyeyg64k"]
+
+[ext_resource type="Texture2D" uid="uid://cga7pglmmm2o" path="res://asset/UI/characters/none.png" id="1_lwth6"]
+[ext_resource type="Texture2D" uid="uid://d0b0kkc474gvl" path="res://asset/character/portrait/16180_normal.png" id="1_ypfhb"]
+[ext_resource type="Texture2D" uid="uid://2y0pwvyat02l" path="res://asset/character/portrait/yan_smile.png" id="2_5ldqs"]
+[ext_resource type="Texture2D" uid="uid://cxxborp8ckjxx" path="res://asset/character/portrait/g_normal.png" id="3_u76cu"]
+[ext_resource type="Texture2D" uid="uid://itcl01ry47ki" path="res://asset/character/portrait/r_normal.png" id="4_nj5pe"]
+[ext_resource type="Texture2D" uid="uid://b71r6w0q532nd" path="res://asset/character/portrait/y_normal.png" id="5_0plaf"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ypfhb")
+}],
+"loop": false,
+"name": &"16180Normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lwth6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u76cu")
+}],
+"loop": true,
+"name": &"gNormal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nj5pe")
+}],
+"loop": true,
+"name": &"rNormal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0plaf")
+}],
+"loop": true,
+"name": &"yNormal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5ldqs")
+}],
+"loop": false,
+"name": &"yanSmile",
+"speed": 5.0
+}]

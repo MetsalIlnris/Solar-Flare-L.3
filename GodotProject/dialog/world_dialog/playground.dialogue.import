@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://bck1li4lg4jtj"
+path="res://.godot/imported/playground.dialogue-22004df4773f4d7f2b8a44b515446854.tres"
+
+[deps]
+
+source_file="res://dialog/world_dialog/playground.dialogue"
+dest_files=["res://.godot/imported/playground.dialogue-22004df4773f4d7f2b8a44b515446854.tres"]
+
+[params]
+
+defaults=true

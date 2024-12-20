@@ -1,0 +1,41 @@
+~ talk_to_sleep
+16180[#16180Normal][#l]: 似乎是一只扫地机器人？它似乎睡着了。
+if PlayerState.have_item("repairCard"):
+	是否激活这只螃蟹？
+	- 是
+		do PlayerState.dialog_action.emit(1)
+	- 否
+		do PlayerState.dialog_action.emit(0)
+=> END
+
+~ talk
+16180[#16180Normal][#l]: 一只螃蟹
+=> END
+
+~ rubbish_16180Cookie
+16180[#16180Normal][#l]: 咦？长得...有点像...
+=> END
+
+~ rubbish_Banana
+16180[#16180Normal][#l]: 香蕉皮。如果在地球上肯定已经臭了
+=> END
+
+~ rubbish_Cola
+16180[#16180Normal][#l]: 喝完之后并没有丢进垃圾桶的罐子
+=> END
+
+~ rubbish_Littleapple
+16180[#16180Normal][#l]: 为什么会有这样的小苹果？
+=> END
+
+~ rubbish_Mountain
+16180[#16180Normal][#l]: 垃圾已经堆成山了。
+=> END
+
+~ rubbish_Stars
+16180[#16180Normal][#l]: 这些碎片也许来自于星星，但仍然是垃圾
+=> END
+
+~ rubbish_Web
+16180[#16180Normal][#l]: 蜘蛛网
+=> END

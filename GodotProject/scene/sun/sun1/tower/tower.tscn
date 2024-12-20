@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxbpajcakrxfo"]
+
+[ext_resource type="Script" path="res://scene/sun/sun1/tower/tower.gd" id="1_ktrug"]
+[ext_resource type="Texture2D" uid="uid://76j0c3k3fvpw" path="res://asset/scene/sun/tower/tower1/main.png" id="2_7hyfq"]
+[ext_resource type="Texture2D" uid="uid://dhtpfxfeu3fr1" path="res://asset/scene/sun/tower/tower1/xu.png" id="3_fw4mb"]
+[ext_resource type="Texture2D" uid="uid://d3oaxhtjp88q3" path="res://asset/scene/sun/tower/tower1/1.png" id="4_ba7ar"]
+[ext_resource type="Texture2D" uid="uid://2g1f5c0p3q3g" path="res://asset/scene/sun/tower/tower1/2.png" id="5_5l5dj"]
+[ext_resource type="PackedScene" uid="uid://btblabqc11rhn" path="res://scene/Components/FollowComponent.tscn" id="5_koc8j"]
+[ext_resource type="Texture2D" uid="uid://k45jo3xll16k" path="res://asset/scene/sun/tower/tower1/3.png" id="6_uw1sa"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_ktrug")
+
+[node name="Main" type="Sprite2D" parent="."]
+position = Vector2(-3, 12)
+texture = ExtResource("2_7hyfq")
+
+[node name="Xu" type="Sprite2D" parent="."]
+position = Vector2(-8, 220)
+texture = ExtResource("3_fw4mb")
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(-3.5, 149)
+texture = ExtResource("4_ba7ar")
+
+[node name="FollowComponent" parent="1" node_paths=PackedStringArray("target") instance=ExtResource("5_koc8j")]
+target = NodePath("../../Main")
+speed = 0.8
+
+[node name="2" type="Sprite2D" parent="."]
+position = Vector2(-5.5, 183)
+texture = ExtResource("5_5l5dj")
+
+[node name="FollowComponent" parent="2" node_paths=PackedStringArray("target") instance=ExtResource("5_koc8j")]
+target = NodePath("../../1")
+speed = 0.75
+
+[node name="3" type="Sprite2D" parent="."]
+position = Vector2(-8.5, 234)
+texture = ExtResource("6_uw1sa")
+
+[node name="FollowComponent" parent="3" node_paths=PackedStringArray("target") instance=ExtResource("5_koc8j")]
+target = NodePath("../../2")
+speed = 0.7

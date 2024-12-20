@@ -1,0 +1,18 @@
+~ p1
+[#s]一个梦。
+do PlayerState.story_action.emit()
+[#s]一个关于耀斑的梦。一个关于死亡的梦。
+do PlayerState.story_action.emit()
+[#s]很重要的东西消失了，被淹没了
+do PlayerState.story_action.emit()
+[#s]你伸出手，但它的离去是如此坚决….
+do PlayerState.story_action.emit()
+[#s]“嘿，我们接下来去太阳上玩吗?"
+do PlayerState.story_action.emit()
+[#s]16180似乎是被某种空间的波纹拉回了现实。列车接近下一站地球，正在减速运行。
+[#s]岩的声音是真实的，她没有消失。她拿着旅游宣传册，正在旁边笑着看着你，背后是陌生忙碌的人群。
+do PlayerState.story_action.emit()
+[#s]但16180似乎做了一场无比真实的梦。冷汗从他的头套里滴落。他再也不愿意再经历一遍那一切。
+[#s]但还好，那只是梦。
+do PlayerState.story_action.emit()
+=> END

@@ -1,0 +1,140 @@
+[gd_scene load_steps=17 format=3 uid="uid://c73puwysc060f"]
+
+[ext_resource type="Script" path="res://scene/map_scene.gd" id="1_ejh7w"]
+[ext_resource type="Shader" path="res://asset/art/bg_processing.gdshader" id="1_n4x2w"]
+[ext_resource type="PackedScene" uid="uid://dqxpc3lj2o27k" path="res://scene/sun/activater.tscn" id="3_cgmq7"]
+[ext_resource type="Texture2D" uid="uid://b7xr41yw6an6m" path="res://asset/scene/playground/background.png" id="3_nfxxh"]
+[ext_resource type="Texture2D" uid="uid://dcl37cr0ttpgn" path="res://asset/landscape/IMG_20210720_162529.jpg" id="3_p824k"]
+[ext_resource type="Shader" path="res://asset/art/scene_processing.gdshader" id="4_s53hu"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_46dvt"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_bnq10"]
+[ext_resource type="PackedScene" uid="uid://db0wn1ipsj75j" path="res://ui/MainUI/MainUI.tscn" id="10_cpycy"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="10_w8ff2"]
+[ext_resource type="PackedScene" uid="uid://cl8bh1j5tjbnr" path="res://scene/Camera/camera.tscn" id="14_3txo0"]
+
+[sub_resource type="Resource" id="Resource_6vbas"]
+script = ExtResource("9_bnq10")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_shvxs"]
+shader = ExtResource("1_n4x2w")
+shader_parameter/background_texture = ExtResource("3_nfxxh")
+shader_parameter/background_texture_night = ExtResource("3_p824k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvu1u"]
+shader = ExtResource("4_s53hu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_waepl"]
+shader = ExtResource("4_s53hu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3od5f"]
+size = Vector2(277.5, 576.5)
+
+[node name="MapScene" type="Node2D"]
+script = ExtResource("1_ejh7w")
+
+[node name="Camera" type="Node" parent="."]
+
+[node name="main_ui" parent="Camera" instance=ExtResource("10_cpycy")]
+visibility_layer = 2
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
+
+[node name="Activater" parent="Camera" instance=ExtResource("3_cgmq7")]
+visible = false
+
+[node name="MainCamera" parent="Camera" instance=ExtResource("14_3txo0")]
+unique_name_in_owner = true
+physics_interpolation_mode = 2
+modulate = Color(0, 0, 0, 1)
+
+[node name="PhantomHost" type="Node" parent="Camera/MainCamera"]
+script = ExtResource("10_w8ff2")
+
+[node name="Main" type="Node2D" parent="Camera"]
+script = ExtResource("8_46dvt")
+tween_resource = SubResource("Resource_6vbas")
+draw_limits = true
+
+[node name="CameraArea" type="Node" parent="Camera"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -20
+scroll_ignore_camera_zoom = true
+
+[node name="BackgroundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -5
+motion_scale = Vector2(0.05, 0.05)
+
+[node name="background" type="Sprite2D" parent="ParallaxBackground/BackgroundLayer"]
+z_index = -2
+material = SubResource("ShaderMaterial_shvxs")
+position = Vector2(960, 540)
+texture = ExtResource("3_nfxxh")
+
+[node name="BlockLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 5
+material = SubResource("ShaderMaterial_gvu1u")
+motion_scale = Vector2(1.05, 1)
+
+[node name="ParallaxMidBackground" type="ParallaxBackground" parent="."]
+layer = -20
+
+[node name="RoomLayer" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_waepl")
+
+[node name="PlayerBoundary" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="PlayerBoundary"]
+position = Vector2(-660, 596)
+shape = SubResource("RectangleShape2D_3od5f")
+
+[node name="CollisionPolygon2D2" type="CollisionShape2D" parent="PlayerBoundary"]
+position = Vector2(2780, 585)
+shape = SubResource("RectangleShape2D_3od5f")
+
+[node name="Characters" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+
+[node name="Objects" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+
+[node name="Areas" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Doors" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Floor" type="Node2D" parent="."]
+
+[node name="ParallaxFront" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="BlockLayer" type="ParallaxLayer" parent="ParallaxFront"]
+z_index = 5
+material = SubResource("ShaderMaterial_gvu1u")
+
+[node name="FrontLayer" type="ParallaxLayer" parent="ParallaxFront"]
+z_index = 5
+material = SubResource("ShaderMaterial_gvu1u")
+motion_scale = Vector2(1.2, 1)
+
+[node name="FrontLayer2" type="ParallaxLayer" parent="ParallaxFront"]
+z_index = 5
+material = SubResource("ShaderMaterial_gvu1u")
+motion_scale = Vector2(1.5, 1)
+
+[node name="FxLayer" type="ParallaxLayer" parent="ParallaxFront"]
+motion_scale = Vector2(0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

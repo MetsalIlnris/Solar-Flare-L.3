@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx7qtcon24pf2"]
+
+[ext_resource type="Script" path="res://ui/Buttons/ToggleButtton.gd" id="1_a1evi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytr3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="leverButtton" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(40, 150)
+toggle_mode = true
+script = ExtResource("1_a1evi")
+
+[node name="Anime" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 75)
+sprite_frames = SubResource("SpriteFrames_ytr3a")
+animation = &"up"
+autoplay = "up"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

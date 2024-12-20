@@ -1,0 +1,233 @@
+[gd_scene load_steps=23 format=3 uid="uid://b6yfk6r2b3k3s"]
+
+[ext_resource type="Script" path="res://dialog/bubble_balloon/bubble_balloon.gd" id="1_h6r7n"]
+[ext_resource type="Shader" path="res://asset/art/UI.gdshader" id="2_flmtc"]
+[ext_resource type="Theme" uid="uid://bc3ohqpp1sfg3" path="res://asset/art/transparency_theme.tres" id="3_ijk8t"]
+[ext_resource type="Texture2D" uid="uid://d357cpypjkqie" path="res://asset/scene/sun/particle/UI/dialog2.png" id="4_1kvj8"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="5_0cupw"]
+[ext_resource type="Theme" uid="uid://dk7bs1nrgjo7f" path="res://dialog/main_balloon/main_balloon.tres" id="6_y77vf"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="7_ch2bf"]
+[ext_resource type="PackedScene" uid="uid://c885aifu2fial" path="res://dialog/main_balloon/main_response_example.tscn" id="8_fkch0"]
+[ext_resource type="Texture2D" uid="uid://cga7pglmmm2o" path="res://asset/UI/characters/none.png" id="8_wyd41"]
+[ext_resource type="Texture2D" uid="uid://7lb3wxaen27i" path="res://asset/character/expression/1 fail.png" id="9_7ksco"]
+[ext_resource type="Texture2D" uid="uid://dhwhl8hbc0a0g" path="res://asset/character/expression/yan success.png" id="9_n3f0v"]
+[ext_resource type="Texture2D" uid="uid://beay0x0w7cbh1" path="res://asset/character/expression/1 success.png" id="10_0mfeg"]
+[ext_resource type="Script" path="res://dialog/main_balloon/Portrait.gd" id="10_l16ov"]
+[ext_resource type="Texture2D" uid="uid://bo227u6r0cmn5" path="res://asset/character/expression/yan fail.png" id="12_3md83"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rppnw"]
+shader = ExtResource("2_flmtc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfexu"]
+shader = ExtResource("2_flmtc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6k6i"]
+shader = ExtResource("2_flmtc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ixmtw"]
+shader = ExtResource("2_flmtc")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ue0gb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_7ksco")
+}],
+"loop": true,
+"name": &"16180Fail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_0mfeg")
+}],
+"loop": true,
+"name": &"16180Success",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_wyd41")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_3md83")
+}],
+"loop": true,
+"name": &"yanFail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_n3f0v")
+}],
+"loop": true,
+"name": &"yanSuccess",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_dlu20"]
+resource_name = "fold_close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jts2h"]
+resource_name = "fold_open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("%Balloon:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.0349066, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Balloon:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_upkgi"]
+_data = {
+"fold_close": SubResource("Animation_dlu20"),
+"fold_open": SubResource("Animation_jts2h")
+}
+
+[node name="MainBalloon" type="CanvasLayer"]
+layer = 40
+script = ExtResource("1_h6r7n")
+
+[node name="Balloon" type="Panel" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_rppnw")
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1090.0
+offset_right = -1627.0
+offset_bottom = -1021.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 6.24828
+theme = ExtResource("3_ijk8t")
+
+[node name="DialogRect" type="Sprite2D" parent="Balloon"]
+position = Vector2(139.797, 36.9012)
+texture = ExtResource("4_1kvj8")
+
+[node name="Dialogue" type="MarginContainer" parent="Balloon"]
+material = SubResource("ShaderMaterial_kfexu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = -32.0
+offset_right = -74.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Dialogue"]
+use_parent_material = true
+layout_mode = 2
+alignment = 1
+
+[node name="DialogueLabel" parent="Balloon/Dialogue/VBoxContainer" instance=ExtResource("5_0cupw")]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("6_y77vf")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "dialogue"
+
+[node name="Responses" type="MarginContainer" parent="Balloon"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.226
+anchor_top = 0.166
+anchor_right = 0.961
+anchor_bottom = 0.168
+offset_left = 477.69
+offset_top = -344.9
+offset_right = 8.88989
+offset_bottom = -45.26
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(350, 0)
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_u6k6i")
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+script = ExtResource("7_ch2bf")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample1" type="Button" parent="Balloon/Responses/ResponsesMenu"]
+visible = false
+use_parent_material = true
+layout_mode = 2
+text = "Response Example"
+
+[node name="ResponseExample" parent="Balloon/Responses/ResponsesMenu" instance=ExtResource("8_fkch0")]
+layout_mode = 2
+
+[node name="Expression" type="AnimatedSprite2D" parent="Balloon"]
+material = SubResource("ShaderMaterial_ixmtw")
+position = Vector2(-24.3344, 9.15635)
+sprite_frames = SubResource("SpriteFrames_ue0gb")
+animation = &"yanSuccess"
+autoplay = "default"
+script = ExtResource("10_l16ov")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Balloon/Expression")
+libraries = {
+"": SubResource("AnimationLibrary_upkgi")
+}
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

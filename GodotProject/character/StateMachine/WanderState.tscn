@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsgmil627atop"]
+
+[ext_resource type="Script" path="res://character/StateMachine/WanderState.gd" id="1_e1ysd"]
+
+[node name="WanderState" type="Node"]
+script = ExtResource("1_e1ysd")
+
+[node name="WanderTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true

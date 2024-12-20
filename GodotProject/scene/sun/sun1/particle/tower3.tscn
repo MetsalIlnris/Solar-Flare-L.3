@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://cguu4l300mpqk"]
+
+[ext_resource type="PackedScene" uid="uid://dpneo62df4d7p" path="res://scene/sun/sun1/particle/tower1.tscn" id="1_2r1hi"]
+[ext_resource type="Texture2D" uid="uid://boj8p5858vtus" path="res://asset/scene/sun/tower/tower3/ball3.png" id="2_n7hwa"]
+[ext_resource type="Texture2D" uid="uid://ddtqbbymigmbi" path="res://asset/scene/sun/tower/tower3/1.png" id="3_grr0y"]
+[ext_resource type="Texture2D" uid="uid://c4ge1khdk28xd" path="res://asset/scene/sun/tower/tower3/2.png" id="4_elcfs"]
+[ext_resource type="Texture2D" uid="uid://d4ihb11c5lp8i" path="res://asset/scene/sun/tower/tower3/3.png" id="5_8ej87"]
+[ext_resource type="Texture2D" uid="uid://bjrirfhi5qail" path="res://asset/scene/sun/tower/tower3/xu.png" id="6_ksvt4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sugc0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1abre"]
+radius = 42.4264
+
+[node name="Tower3" instance=ExtResource("1_2r1hi")]
+tower_id = 3
+excape_value_max = 250
+cursor_speed = 0.4
+
+[node name="Main" parent="Tower" index="0"]
+texture = ExtResource("2_n7hwa")
+offset = Vector2(-6.875, -3.975)
+
+[node name="FloatComponent" parent="Tower/Main" index="1"]
+float_range = Vector2(0, 6)
+
+[node name="CapturedParticle" parent="Tower/Main" index="2"]
+texture = SubResource("CompressedTexture2D_sugc0")
+
+[node name="CollisionShape2D" parent="Tower" index="1"]
+shape = SubResource("CircleShape2D_1abre")
+
+[node name="1" parent="Balls" index="0"]
+position = Vector2(-2, 107)
+texture = ExtResource("3_grr0y")
+
+[node name="Xu" parent="Balls" index="1"]
+position = Vector2(1, 203)
+texture = ExtResource("6_ksvt4")
+
+[node name="2" parent="Balls" index="2"]
+position = Vector2(0, 148)
+texture = ExtResource("4_elcfs")
+
+[node name="3" parent="Balls" index="3"]
+position = Vector2(-6, 206)
+texture = ExtResource("5_8ej87")

@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcifo4ykssrf6"]
+
+[ext_resource type="Script" path="res://ui/ItemBag/ItemBag.gd" id="1_ybq0k"]
+[ext_resource type="Texture2D" uid="uid://trlnjgbi3mnw" path="res://asset/UI/item/background_for_items.png" id="2_daj2x"]
+[ext_resource type="PackedScene" uid="uid://dbcc5afpi4q73" path="res://ui/Buttons/InteractiveButton.tscn" id="2_j46jr"]
+[ext_resource type="Texture2D" uid="uid://q83fce6w7l6v" path="res://asset/UI/photo album/magnet.png" id="3_y3v73"]
+[ext_resource type="Texture2D" uid="uid://us3xdruqji3a" path="res://asset/UI/photo album/pageback.png" id="4_wpg6x"]
+[ext_resource type="Texture2D" uid="uid://dmqo4qkvwj0i4" path="res://asset/UI/photo album/pageforward.png" id="5_teyg2"]
+[ext_resource type="Texture2D" uid="uid://b6u1ttaqld3fu" path="res://asset/UI/photo album/close.png" id="6_gwv81"]
+[ext_resource type="SpriteFrames" uid="uid://degbikdvh4mne" path="res://asset/UI/item/item_anim.tres" id="6_ylgfb"]
+[ext_resource type="Theme" uid="uid://bc3ohqpp1sfg3" path="res://asset/art/transparency_theme.tres" id="7_3p5h5"]
+
+[node name="ItemBag" type="CanvasLayer"]
+script = ExtResource("1_ybq0k")
+
+[node name="BackgroundForItems" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(914, 579)
+texture = ExtResource("2_daj2x")
+
+[node name="CloseButton" parent="." instance=ExtResource("2_j46jr")]
+visible = false
+offset_left = 1564.0
+offset_top = 379.0
+offset_right = -143.0
+offset_bottom = -485.0
+texture_normal = ExtResource("3_y3v73")
+
+[node name="BackButton" parent="." instance=ExtResource("2_j46jr")]
+offset_left = 370.0
+offset_top = 553.0
+offset_right = -1339.0
+offset_bottom = -336.0
+texture_normal = ExtResource("4_wpg6x")
+
+[node name="ForwardButton" parent="." instance=ExtResource("2_j46jr")]
+offset_left = 1334.0
+offset_top = 568.0
+offset_right = -385.0
+offset_bottom = -322.0
+texture_normal = ExtResource("5_teyg2")
+
+[node name="ItemAnim" type="AnimatedSprite2D" parent="."]
+position = Vector2(960, 540)
+sprite_frames = ExtResource("6_ylgfb")
+animation = &"particle"
+
+[node name="Close" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(978, 506)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_gwv81")
+
+[node name="DetailButton" type="Button" parent="."]
+offset_left = 737.0
+offset_top = 255.0
+offset_right = 1186.0
+offset_bottom = 705.0
+theme = ExtResource("7_3p5h5")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ForwardButton" to="." method="_on_forward_button_pressed"]
+[connection signal="pressed" from="DetailButton" to="." method="_on_detail_button_pressed"]

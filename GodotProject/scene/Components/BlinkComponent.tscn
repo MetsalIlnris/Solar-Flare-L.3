@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://x7vd77yi3s7j"]
+
+[ext_resource type="Script" path="res://scene/Components/BlinkComponent.gd" id="1_5mlkn"]
+
+[node name="BlinkComponent" type="Node"]
+script = ExtResource("1_5mlkn")

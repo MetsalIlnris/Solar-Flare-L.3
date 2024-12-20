@@ -1,0 +1,118 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4wcolr5ms027"]
+
+[ext_resource type="Script" path="res://ui/PlayerStateBar/PlayerStateBar.gd" id="1_hxe8r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqui1"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"highSan",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"lowSan",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"midSan",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_go38v"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"highSan",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"lowSan",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"midSan",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_vaj6q"]
+resource_name = "brainMovement"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brainAnime:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(100, 3), Vector2(100, 10), Vector2(100, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xh35y"]
+_data = {
+"brainMovement": SubResource("Animation_vaj6q")
+}
+
+[node name="StateBarPanel" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hxe8r")
+
+[node name="emoBackgroundAnime" type="AnimatedSprite2D" parent="."]
+position = Vector2(100, 0)
+sprite_frames = SubResource("SpriteFrames_nqui1")
+animation = &"midSan"
+
+[node name="brainAnime" type="AnimatedSprite2D" parent="."]
+position = Vector2(100, 3)
+scale = Vector2(0.0872222, 0.0872222)
+sprite_frames = SubResource("SpriteFrames_go38v")
+animation = &"lowSan"
+
+[node name="hoverButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 19.0
+offset_top = -81.0
+offset_right = 182.0
+offset_bottom = 82.0
+
+[node name="emoLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 2.0
+offset_right = 103.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "情绪：50"
+
+[node name="sanLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 44.0
+offset_right = 104.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "理智：60"
+
+[node name="buffContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -44.0
+offset_top = -80.0
+offset_right = -4.0
+offset_bottom = 78.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xh35y")
+}
+
+[connection signal="mouse_entered" from="hoverButton" to="." method="_on_hover_button_mouse_entered"]
+[connection signal="mouse_exited" from="hoverButton" to="." method="_on_hover_button_mouse_exited"]

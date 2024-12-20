@@ -1,0 +1,153 @@
+[gd_scene load_steps=18 format=3 uid="uid://chqw41mi2u4xx"]
+
+[ext_resource type="Script" path="res://scene/sun/sun3/fly_game/fly_game.gd" id="1_4ccj3"]
+[ext_resource type="Texture2D" uid="uid://bgqnrgo5kl2yg" path="res://asset/scene/sun/sun.png" id="1_yhisd"]
+[ext_resource type="Texture2D" uid="uid://cmcotqi00t8aa" path="res://asset/scene/sun3/research/fly/frame.png" id="2_ucv4p"]
+[ext_resource type="Texture2D" uid="uid://ch8scjjw6qg0d" path="res://asset/scene/sun3/research/fly/circle.png" id="3_7aanj"]
+[ext_resource type="Texture2D" uid="uid://cn8hesows8kg6" path="res://asset/scene/sun3/research/fly/apple.png" id="4_bwcg5"]
+[ext_resource type="Shader" path="res://scene/sun/sun1/sun.gdshader" id="4_k1bh4"]
+[ext_resource type="PackedScene" uid="uid://4xgamsb5thji" path="res://scene/sun/sun3/fly_game/fly_character.tscn" id="5_h6qhw"]
+[ext_resource type="PackedScene" uid="uid://ch077xf4ciy1s" path="res://ui/Font/Digit.tscn" id="6_ox7wf"]
+[ext_resource type="Texture2D" uid="uid://cs3tg1lfmfdjj" path="res://asset/scene/sun3/research/fly/16180.png" id="6_ttksa"]
+[ext_resource type="Texture2D" uid="uid://cqcnbpa0owd2k" path="res://asset/scene/sun3/research/fly/ready.png" id="9_s3a0t"]
+[ext_resource type="Texture2D" uid="uid://b1ki2dmpyppf1" path="res://asset/scene/sun3/research/fly/go.png" id="10_eolm8"]
+[ext_resource type="Texture2D" uid="uid://cod4n1xf4w3wi" path="res://asset/scene/sun3/research/fly/lose1.png" id="11_vbhto"]
+[ext_resource type="Texture2D" uid="uid://bxds3gkg08yj5" path="res://asset/scene/sun3/research/fly/lose2.png" id="12_4x0vn"]
+[ext_resource type="Texture2D" uid="uid://ddxrelom7bcfl" path="res://asset/scene/sun3/research/fly/win1.png" id="13_t7hfi"]
+[ext_resource type="Texture2D" uid="uid://byeat45s7bd2g" path="res://asset/scene/sun3/research/fly/win2.png" id="14_d4sum"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80dfh"]
+shader = ExtResource("4_k1bh4")
+shader_parameter/time = null
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2pwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_vbhto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4x0vn")
+}],
+"loop": true,
+"name": &"lose",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_t7hfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d4sum")
+}],
+"loop": true,
+"name": &"win",
+"speed": 5.0
+}]
+
+[node name="FlyGame" type="CanvasLayer"]
+script = ExtResource("1_4ccj3")
+
+[node name="Sun" type="Sprite2D" parent="."]
+position = Vector2(807, 608)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_yhisd")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1737.0
+offset_bottom = 559.0
+
+[node name="FlyCharacter" parent="Control" instance=ExtResource("5_h6qhw")]
+clip_children = 1
+position = Vector2(324, 289)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_80dfh")
+offset_right = 1930.0
+offset_bottom = 1086.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Frame" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_ucv4p")
+
+[node name="Bunny" type="Sprite2D" parent="Frame"]
+self_modulate = Color(0.552941, 0.533333, 0.584314, 1)
+position = Vector2(809, -273)
+texture = ExtResource("3_7aanj")
+
+[node name="Control" type="ColorRect" parent="Frame/Bunny"]
+clip_children = 1
+offset_left = -146.0
+offset_top = -129.0
+offset_right = 146.0
+offset_bottom = 131.0
+
+[node name="Light" type="Sprite2D" parent="Frame/Bunny/Control"]
+position = Vector2(147, 130)
+texture = ExtResource("3_7aanj")
+
+[node name="16180" type="Sprite2D" parent="Frame"]
+position = Vector2(812, -277)
+texture = ExtResource("6_ttksa")
+
+[node name="Digit" parent="Frame" instance=ExtResource("6_ox7wf")]
+position = Vector2(804, -6)
+
+[node name="Timer" type="Timer" parent="Frame/Digit"]
+
+[node name="Apple" type="Sprite2D" parent="Frame"]
+self_modulate = Color(0.552941, 0.533333, 0.584314, 1)
+position = Vector2(809, 273)
+texture = ExtResource("3_7aanj")
+
+[node name="Control" type="ColorRect" parent="Frame/Apple"]
+clip_children = 1
+offset_left = -146.0
+offset_top = -129.0
+offset_right = 146.0
+offset_bottom = 133.0
+
+[node name="Light" type="Sprite2D" parent="Frame/Apple/Control"]
+position = Vector2(147, 130)
+texture = ExtResource("3_7aanj")
+
+[node name="Apple2" type="Sprite2D" parent="Frame"]
+position = Vector2(820, 267)
+texture = ExtResource("4_bwcg5")
+
+[node name="Over" type="Node2D" parent="."]
+
+[node name="Ready" type="Sprite2D" parent="Over"]
+visible = false
+position = Vector2(866, 542)
+texture = ExtResource("9_s3a0t")
+
+[node name="Go" type="Sprite2D" parent="Over"]
+visible = false
+position = Vector2(881, 538)
+texture = ExtResource("10_eolm8")
+
+[node name="Win" type="AnimatedSprite2D" parent="Over"]
+visible = false
+position = Vector2(1363, 291)
+sprite_frames = SubResource("SpriteFrames_d2pwr")
+animation = &"lose"
+frame_progress = 0.414692
+
+[node name="Win2" type="AnimatedSprite2D" parent="Over"]
+visible = false
+position = Vector2(1368, 814)
+sprite_frames = SubResource("SpriteFrames_d2pwr")
+animation = &"lose"
+frame_progress = 0.414692
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[connection signal="timeout" from="Frame/Digit/Timer" to="." method="_on_timer_timeout"]

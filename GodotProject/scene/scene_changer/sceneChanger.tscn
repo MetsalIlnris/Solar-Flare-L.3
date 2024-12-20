@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://culesorfm3e1f"]
+
+[ext_resource type="Script" path="res://scene/scene_changer/sceneChanger.gd" id="1_xt0dj"]
+
+[sub_resource type="Animation" id="Animation_hhhgm"]
+resource_name = "fade_in"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("curtain:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_voajk"]
+_data = {
+"fade_in": SubResource("Animation_hhhgm")
+}
+
+[node name="SceneChanger" type="CanvasLayer"]
+script = ExtResource("1_xt0dj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_voajk")
+}
+
+[node name="curtain" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

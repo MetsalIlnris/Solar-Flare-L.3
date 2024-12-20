@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bkuqqgpwilw61"]
+
+[ext_resource type="Texture2D" uid="uid://p33ute34ty7v" path="res://asset/scene/sun3/research/switch/smalloff.png" id="1_cf3fo"]
+[ext_resource type="Texture2D" uid="uid://cqkyls5gr5gfe" path="res://asset/scene/sun3/research/switch/smallon.png" id="2_4c47j"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cf3fo")
+}],
+"loop": true,
+"name": &"off",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4c47j")
+}],
+"loop": true,
+"name": &"on",
+"speed": 2.0
+}]

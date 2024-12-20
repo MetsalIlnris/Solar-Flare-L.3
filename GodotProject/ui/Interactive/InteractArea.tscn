@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk480uvttabo"]
+
+[ext_resource type="Script" path="res://ui/Interactive/InteractArea.gd" id="1_u5hb1"]
+[ext_resource type="Theme" uid="uid://dnomyl4idewv0" path="res://ui/Interactive/interactive_label.tres" id="2_s5qe7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43dyu"]
+size = Vector2(121, 195)
+
+[sub_resource type="Animation" id="Animation_35qcc"]
+resource_name = "show_tip"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/TipLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-130, -180), Vector2(-130, -220)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/TipLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hu75d"]
+_data = {
+"show_tip": SubResource("Animation_35qcc")
+}
+
+[node name="InteractArea" type="Area2D" groups=["interact_area"]]
+script = ExtResource("1_u5hb1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_43dyu")
+
+[node name="TipLabel" type="Label" parent="CollisionShape2D"]
+modulate = Color(1, 1, 1, 0)
+z_index = 50
+offset_left = -130.0
+offset_top = -180.0
+offset_right = 130.0
+offset_bottom = -67.0
+theme = ExtResource("2_s5qe7")
+text = "tip文本"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hu75d")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

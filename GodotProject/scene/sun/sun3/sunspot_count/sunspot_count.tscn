@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://caluh1ts3ab2h"]
+
+[ext_resource type="Texture2D" uid="uid://xclp37kv3oap" path="res://asset/scene/sun3/research/sunspot/bg.png" id="1_4osof"]
+[ext_resource type="Script" path="res://scene/sun/sun3/sunspot_count/sunspot_count.gd" id="1_ghifm"]
+[ext_resource type="PackedScene" uid="uid://capgoet0pl3j5" path="res://scene/Components/ControllComponent.tscn" id="2_7g4j5"]
+[ext_resource type="Script" path="res://scene/sun/sun3/sunspot_count/len.gd" id="4_bw0b3"]
+[ext_resource type="Texture2D" uid="uid://6dxgalp6b5hc" path="res://asset/scene/sun3/research/sunspot/len.png" id="5_rt7i5"]
+[ext_resource type="Texture2D" uid="uid://5c41tmol1xuw" path="res://asset/scene/sun3/research/sunspot/inner.png" id="7_rpm6c"]
+[ext_resource type="Texture2D" uid="uid://c8suy6r6ne3r5" path="res://asset/scene/sun3/research/sunspot/outer.png" id="8_0dim7"]
+[ext_resource type="PackedScene" uid="uid://ch077xf4ciy1s" path="res://ui/Font/Digit.tscn" id="8_8g2yo"]
+
+[sub_resource type="BitMap" id="BitMap_n2iq3"]
+
+[sub_resource type="Animation" id="Animation_lqwyi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Count:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(751, -423)]
+}
+
+[sub_resource type="Animation" id="Animation_qf70h"]
+resource_name = "add_num"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Count:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(751, -423), Vector2(751, -450), Vector2(751, -423)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u20e4"]
+_data = {
+"RESET": SubResource("Animation_lqwyi"),
+"add_num": SubResource("Animation_qf70h")
+}
+
+[node name="SunspotCount" type="CanvasLayer"]
+layer = 10
+follow_viewport_enabled = true
+script = ExtResource("1_ghifm")
+
+[node name="SpotCanvas" type="Node2D" parent="."]
+
+[node name="Bg" type="Sprite2D" parent="SpotCanvas"]
+position = Vector2(-2, 5)
+texture = ExtResource("1_4osof")
+
+[node name="Spots" type="Node2D" parent="SpotCanvas"]
+
+[node name="Len" type="Camera2D" parent="."]
+script = ExtResource("4_bw0b3")
+
+[node name="ControllComponent" parent="Len" instance=ExtResource("2_7g4j5")]
+limit_h = Vector2(-1600, 1600)
+limit_v = Vector2(-1600, 1600)
+
+[node name="Len" type="Sprite2D" parent="Len"]
+texture = ExtResource("5_rt7i5")
+
+[node name="Outer" type="Sprite2D" parent="Len"]
+texture = ExtResource("8_0dim7")
+
+[node name="InnerKnob" type="TextureButton" parent="Len"]
+offset_left = -462.0
+offset_top = -440.0
+offset_right = 461.0
+offset_bottom = 461.0
+pivot_offset = Vector2(461, 450)
+texture_normal = ExtResource("7_rpm6c")
+texture_click_mask = SubResource("BitMap_n2iq3")
+
+[node name="Count" parent="Len" instance=ExtResource("8_8g2yo")]
+position = Vector2(751, -423)
+
+[node name="Timer" parent="Len" instance=ExtResource("8_8g2yo")]
+position = Vector2(-800, -412)
+
+[node name="Timer" type="Timer" parent="Len/Timer"]
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Len"]
+libraries = {
+"": SubResource("AnimationLibrary_u20e4")
+}
+
+[connection signal="button_down" from="Len/InnerKnob" to="Len" method="_on_inner_knob_button_down"]
+[connection signal="button_up" from="Len/InnerKnob" to="Len" method="_on_inner_knob_button_up"]
+[connection signal="timeout" from="Len/Timer/Timer" to="." method="_on_timer_timeout"]

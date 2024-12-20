@@ -1,0 +1,289 @@
+[gd_scene load_steps=39 format=3 uid="uid://byp10pd17btq0"]
+
+[ext_resource type="Script" path="res://scene/sun/sun1/particle/particle_collect.gd" id="1_m1mcf"]
+[ext_resource type="Shader" path="res://asset/art/bg_processing.gdshader" id="2_d3mpu"]
+[ext_resource type="Texture2D" uid="uid://bgqnrgo5kl2yg" path="res://asset/scene/sun/sun.png" id="3_gonxk"]
+[ext_resource type="Texture2D" uid="uid://bfvnftr5k5n3k" path="res://asset/scene/sun/tower/dot right.png" id="7_ih7ci"]
+[ext_resource type="PackedScene" uid="uid://cfqfrs85b36ex" path="res://scene/Components/RotateComponent.tscn" id="8_t3xo2"]
+[ext_resource type="PackedScene" uid="uid://x7vd77yi3s7j" path="res://scene/Components/BlinkComponent.tscn" id="9_ex0q8"]
+[ext_resource type="PackedScene" uid="uid://c50lx2daa5pn7" path="res://scene/Components/FloatComponent.tscn" id="11_clddg"]
+[ext_resource type="Texture2D" uid="uid://db47qb2rfhuc8" path="res://asset/scene/sun/tower/right.png" id="12_ttc57"]
+[ext_resource type="Texture2D" uid="uid://lyi5wahjboc1" path="res://asset/scene/sun/tower/dot below.png" id="14_42ua3"]
+[ext_resource type="PackedScene" uid="uid://cguu4l300mpqk" path="res://scene/sun/sun1/particle/tower3.tscn" id="14_y7sha"]
+[ext_resource type="Texture2D" uid="uid://cxuluxpwqral0" path="res://asset/scene/sun/tower/middle.png" id="15_pyj2g"]
+[ext_resource type="Texture2D" uid="uid://byuwp20mn7mr7" path="res://asset/scene/sun/tower/dot left.png" id="16_kx7ir"]
+[ext_resource type="Texture2D" uid="uid://d1w3x4vhq430b" path="res://asset/scene/sun/particle/UI/progress bar background.png" id="16_toyvj"]
+[ext_resource type="Theme" uid="uid://dnomyl4idewv0" path="res://ui/Interactive/interactive_label.tres" id="17_dghfx"]
+[ext_resource type="Texture2D" uid="uid://dlt5d5fjxqwlj" path="res://asset/scene/sun/particle/UI/1.png" id="17_dkvmw"]
+[ext_resource type="PackedScene" uid="uid://dpneo62df4d7p" path="res://scene/sun/sun1/particle/tower1.tscn" id="17_koq8n"]
+[ext_resource type="Texture2D" uid="uid://bdblqq6g2b3g2" path="res://asset/scene/sun/tower/left.png" id="18_anfke"]
+[ext_resource type="PackedScene" uid="uid://tmtq431h1qex" path="res://scene/sun/sun1/particle/tower2.tscn" id="18_ap0cl"]
+[ext_resource type="Texture2D" uid="uid://do11gktkw8y8k" path="res://asset/scene/sun/particle/UI/panel.png" id="18_w243n"]
+[ext_resource type="Texture2D" uid="uid://c7bvaefwrn8yw" path="res://asset/scene/sun/particle/UI/2.png" id="18_yyaq0"]
+[ext_resource type="Texture2D" uid="uid://bqq1kgj7gleo3" path="res://asset/scene/sun/particle/UI/3.png" id="19_1ppq8"]
+[ext_resource type="Texture2D" uid="uid://cga7pglmmm2o" path="res://asset/UI/characters/none.png" id="19_5w24p"]
+[ext_resource type="Texture2D" uid="uid://bssjvvjpw3g6" path="res://asset/scene/sun/particle/UI/sl2.png" id="19_h1mkg"]
+[ext_resource type="Texture2D" uid="uid://d3xgae131rd45" path="res://asset/scene/sun/particle/UI/4.png" id="20_erx6b"]
+[ext_resource type="Texture2D" uid="uid://bfjnixmq245k6" path="res://asset/scene/sun/particle/UI/sl.png" id="20_ragi4"]
+[ext_resource type="Texture2D" uid="uid://e3bdigdmedyy" path="res://asset/scene/sun/particle/UI/5.png" id="21_jpjn7"]
+[ext_resource type="Texture2D" uid="uid://dhsnbxqg1hcob" path="res://asset/scene/sun/particle/character/normal.png" id="21_pv3l7"]
+[ext_resource type="Texture2D" uid="uid://crkf7ygy2f18p" path="res://asset/scene/sun/particle/character/v2.png" id="22_k1ftl"]
+[ext_resource type="Texture2D" uid="uid://cknr04eswhy4l" path="res://asset/scene/sun/particle/character/v.png" id="23_2bxd0"]
+[ext_resource type="Texture2D" uid="uid://cxjeob3j2qsdk" path="res://asset/scene/sun/particle/character/normal2.png" id="23_hm3hr"]
+[ext_resource type="Theme" uid="uid://dk7bs1nrgjo7f" path="res://dialog/main_balloon/main_balloon.tres" id="24_2fxf6"]
+[ext_resource type="Texture2D" uid="uid://c73rnuq7a5yf5" path="res://asset/scene/sun/particle/UI/dialog1.png" id="26_4acfa"]
+[ext_resource type="FontFile" uid="uid://vlrjolv1it61" path="res://asset/fonts/XiaolaiMonoSC-Regular.ttf" id="27_jhs8w"]
+[ext_resource type="Shader" path="res://scene/sun/sun1/sun.gdshader" id="33_bk78l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yn30k"]
+shader = ExtResource("2_d3mpu")
+shader_parameter/background_texture = ExtResource("3_gonxk")
+shader_parameter/background_texture_night = ExtResource("3_gonxk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca5go"]
+shader = ExtResource("33_bk78l")
+shader_parameter/time = null
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b0qri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_5w24p")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_h1mkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ragi4")
+}],
+"loop": true,
+"name": &"vic",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fee4p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_pv3l7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_hm3hr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_k1ftl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_2bxd0")
+}],
+"loop": true,
+"name": &"vic",
+"speed": 2.0
+}]
+
+[node name="ParticleCollect" type="CanvasLayer"]
+layer = 25
+script = ExtResource("1_m1mcf")
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -2
+material = SubResource("ShaderMaterial_yn30k")
+position = Vector2(960, 1200)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_gonxk")
+
+[node name="GameLayer" type="Node2D" parent="."]
+position = Vector2(20, 0)
+
+[node name="Sign" type="Node2D" parent="GameLayer"]
+position = Vector2(0, -20)
+
+[node name="BlinkComponent" parent="GameLayer/Sign" instance=ExtResource("9_ex0q8")]
+blink_speed = 0.5
+blink_range = Vector2(0, 0.2)
+
+[node name="DotRight" type="Sprite2D" parent="GameLayer/Sign"]
+position = Vector2(800.5, 376.5)
+texture = ExtResource("7_ih7ci")
+
+[node name="RotateComponent" parent="GameLayer/Sign/DotRight" instance=ExtResource("8_t3xo2")]
+rotate_speed = 0.01
+
+[node name="Right" type="Sprite2D" parent="GameLayer/Sign"]
+position = Vector2(1151, 375)
+texture = ExtResource("12_ttc57")
+
+[node name="DotBelow" type="Sprite2D" parent="GameLayer/Sign"]
+position = Vector2(489, 553)
+texture = ExtResource("14_42ua3")
+
+[node name="RotateComponent" parent="GameLayer/Sign/DotBelow" instance=ExtResource("8_t3xo2")]
+rotate_speed = 0.01
+
+[node name="Middle" type="Sprite2D" parent="GameLayer/Sign"]
+position = Vector2(571, 317)
+texture = ExtResource("15_pyj2g")
+
+[node name="DotLeft" type="Sprite2D" parent="GameLayer/Sign"]
+position = Vector2(538.5, 234.5)
+texture = ExtResource("16_kx7ir")
+
+[node name="RotateComponent" parent="GameLayer/Sign/DotLeft" instance=ExtResource("8_t3xo2")]
+rotate_speed = 0.01
+
+[node name="Left" type="Sprite2D" parent="GameLayer/Sign"]
+position = Vector2(147, 431)
+texture = ExtResource("18_anfke")
+
+[node name="Tower3" parent="GameLayer" instance=ExtResource("14_y7sha")]
+position = Vector2(1209, -51)
+cursor_speed = 1.0
+
+[node name="Tower2" parent="GameLayer" instance=ExtResource("18_ap0cl")]
+position = Vector2(759, -130)
+
+[node name="Tower1" parent="GameLayer" instance=ExtResource("17_koq8n")]
+position = Vector2(347, -150)
+
+[node name="Particle" type="Node2D" parent="."]
+
+[node name="Effect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ca5go")
+offset_right = 1930.0
+offset_bottom = 1086.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainProcess" type="Node2D" parent="UI"]
+position = Vector2(0, -10)
+
+[node name="ProgressBarBackground" type="Sprite2D" parent="UI/MainProcess"]
+position = Vector2(1494, 133)
+texture = ExtResource("16_toyvj")
+
+[node name="1" type="Sprite2D" parent="UI/MainProcess"]
+visible = false
+position = Vector2(1276, 130)
+texture = ExtResource("17_dkvmw")
+
+[node name="2" type="Sprite2D" parent="UI/MainProcess"]
+visible = false
+position = Vector2(1361, 132)
+texture = ExtResource("18_yyaq0")
+
+[node name="4" type="Sprite2D" parent="UI/MainProcess"]
+visible = false
+position = Vector2(1592, 129)
+texture = ExtResource("20_erx6b")
+
+[node name="3" type="Sprite2D" parent="UI/MainProcess"]
+visible = false
+position = Vector2(1473, 134)
+texture = ExtResource("19_1ppq8")
+
+[node name="5" type="Sprite2D" parent="UI/MainProcess"]
+visible = false
+position = Vector2(1710, 133)
+texture = ExtResource("21_jpjn7")
+
+[node name="Label" type="Label" parent="UI/MainProcess"]
+visible = false
+offset_left = 1500.0
+offset_top = 104.0
+offset_right = 1682.0
+offset_bottom = 153.0
+theme = ExtResource("17_dghfx")
+text = "0/5"
+horizontal_alignment = 2
+
+[node name="Tip" type="Label" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 188.0
+offset_top = 72.0
+offset_right = 495.0
+offset_bottom = 151.0
+theme = ExtResource("24_2fxf6")
+theme_override_colors/font_color = Color(0.94902, 0.956863, 0.470588, 1)
+theme_override_colors/font_outline_color = Color(0.835294, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 60
+text = "保持！！！"
+
+[node name="BlinkComponent" parent="UI/Tip" instance=ExtResource("9_ex0q8")]
+blink_speed = 4.0
+blink_range = Vector2(0.2, 1)
+
+[node name="Panel" type="Sprite2D" parent="UI"]
+position = Vector2(960, 562)
+texture = ExtResource("18_w243n")
+
+[node name="Mid" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(970, 516)
+sprite_frames = SubResource("SpriteFrames_b0qri")
+autoplay = "default"
+
+[node name="Charactor" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(965, 566)
+sprite_frames = SubResource("SpriteFrames_fee4p")
+autoplay = "default"
+
+[node name="Help" type="Button" parent="UI"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 803.0
+offset_top = 923.0
+offset_right = 1168.0
+offset_bottom = 1006.0
+
+[node name="Dialog" type="Sprite2D" parent="UI/Help"]
+visible = false
+position = Vector2(169, -99)
+texture = ExtResource("26_4acfa")
+
+[node name="Label" type="Label" parent="UI/Help/Dialog"]
+offset_left = -56.0
+offset_top = -36.0
+offset_right = 64.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(0.329412, 0.423529, 0.894118, 1)
+theme_override_colors/font_outline_color = Color(0.32549, 0.411765, 0.894118, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("27_jhs8w")
+theme_override_font_sizes/font_size = 30
+text = "操作指南"
+horizontal_alignment = 1
+
+[node name="FloatComponent" parent="UI/Help/Dialog" instance=ExtResource("11_clddg")]
+float_speed = 1.5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="Timer"]
+position = Vector2(2021, 589)
+
+[connection signal="excape" from="GameLayer/Tower3" to="." method="collect_fail"]
+[connection signal="excape" from="GameLayer/Tower2" to="." method="collect_fail"]
+[connection signal="excape" from="GameLayer/Tower1" to="." method="collect_fail"]
+[connection signal="mouse_entered" from="UI/Help" to="." method="_on_help_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Help" to="." method="_on_help_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

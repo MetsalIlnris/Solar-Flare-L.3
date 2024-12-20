@@ -1,0 +1,193 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqxpc3lj2o27k"]
+
+[ext_resource type="Script" path="res://scene/sun/activater.gd" id="1_fic1j"]
+[ext_resource type="Texture2D" uid="uid://dwr3pn1o81525" path="res://asset/scene/sun/activate/background.png" id="2_ifq77"]
+[ext_resource type="PackedScene" uid="uid://catf20fnpud53" path="res://scene/sun/tiny_block.tscn" id="3_n5qcd"]
+[ext_resource type="Texture2D" uid="uid://c4px6teyum0ec" path="res://asset/scene/sun/activate/shadow off.png" id="4_666ds"]
+[ext_resource type="Texture2D" uid="uid://we2y4g0mpd40" path="res://asset/scene/sun/activate/back off.png" id="5_u13yj"]
+[ext_resource type="Texture2D" uid="uid://btvpqb4gi4n86" path="res://asset/scene/sun/activate/back on.png" id="6_1ubmi"]
+[ext_resource type="Texture2D" uid="uid://bqeprexjxf01h" path="res://asset/scene/sun/activate/reset off.png" id="7_5irml"]
+[ext_resource type="Texture2D" uid="uid://by67n6utqklcs" path="res://asset/scene/sun/activate/reset on.png" id="8_ipdri"]
+
+[node name="Activater" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_fic1j")
+metadata/_edit_horizontal_guides_ = [1079.0]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(968, 540)
+texture = ExtResource("2_ifq77")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 720.0
+offset_top = 240.0
+offset_right = 1340.0
+offset_bottom = 860.0
+columns = 6
+
+[node name="TinyBlock1" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock2" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock3" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock4" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock5" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock6" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock7" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock8" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock9" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock10" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock11" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock12" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock13" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock14" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock15" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock16" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock17" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock18" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock19" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock20" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock21" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock22" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock23" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock24" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock25" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock26" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock27" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock28" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock29" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock30" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock31" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock32" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock33" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock34" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock35" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="TinyBlock36" parent="GridContainer" instance=ExtResource("3_n5qcd")]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 200.0
+offset_top = 180.0
+offset_right = 386.0
+offset_bottom = 356.0
+
+[node name="ShadowOff" type="Sprite2D" parent="BackButton"]
+position = Vector2(82, 104)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("4_666ds")
+
+[node name="BackOff" type="Sprite2D" parent="BackButton"]
+position = Vector2(87, 93)
+texture = ExtResource("5_u13yj")
+
+[node name="BackOn" type="Sprite2D" parent="BackButton"]
+position = Vector2(99, 90)
+texture = ExtResource("6_1ubmi")
+
+[node name="MouseBlocker" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 671.0
+offset_top = 202.0
+offset_right = 1349.0
+offset_bottom = 850.0
+
+[node name="ResetButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 200.0
+offset_top = 400.0
+offset_right = 388.0
+offset_bottom = 583.0
+
+[node name="ShadowOff" type="Sprite2D" parent="ResetButton"]
+position = Vector2(80, 105)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("4_666ds")
+
+[node name="ResetOff" type="Sprite2D" parent="ResetButton"]
+position = Vector2(87.5, 96)
+texture = ExtResource("7_5irml")
+
+[node name="ResetOn" type="Sprite2D" parent="ResetButton"]
+position = Vector2(95.5, 95)
+texture = ExtResource("8_ipdri")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="button_down" from="BackButton" to="." method="_on_back_button_button_down"]
+[connection signal="button_up" from="BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="button_down" from="ResetButton" to="." method="_on_reset_button_button_down"]
+[connection signal="button_up" from="ResetButton" to="." method="_on_reset_button_button_up"]
+[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]

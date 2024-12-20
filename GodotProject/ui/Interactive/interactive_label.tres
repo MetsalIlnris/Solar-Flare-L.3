@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dnomyl4idewv0"]
+
+[ext_resource type="StyleBox" uid="uid://b8aoj5gcadnhc" path="res://dialog/main_balloon/main_button_style_box_flat.tres" id="1_7l8en"]
+[ext_resource type="StyleBox" uid="uid://bj6fn3xwitj7o" path="res://dialog/main_balloon/main_style_box_flat.tres" id="2_pspxt"]
+[ext_resource type="FontFile" uid="uid://but3bm62s6eny" path="res://asset/fonts/XiaolaiSC-Regular.ttf" id="3_a0xlm"]
+
+[resource]
+default_font = ExtResource("3_a0xlm")
+default_font_size = 30
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.45098, 0.45098, 0.45098, 0.501961)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.278431, 0.278431, 0.278431, 1)
+Button/colors/font_hover_pressed_color = Color(0.188235, 0.188235, 0.188235, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.352941, 0.352941, 0.352941, 1)
+Button/styles/disabled = ExtResource("1_7l8en")
+Button/styles/focus = ExtResource("1_7l8en")
+Button/styles/hover = ExtResource("1_7l8en")
+Button/styles/normal = ExtResource("1_7l8en")
+Button/styles/pressed = ExtResource("1_7l8en")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 9
+Label/font_sizes/font_size = 40
+Label/fonts/font = ExtResource("3_a0xlm")
+MarginContainer/constants/margin_bottom = 15
+MarginContainer/constants/margin_left = 30
+MarginContainer/constants/margin_right = 30
+MarginContainer/constants/margin_top = 15
+Panel/colors/font_color = Color(0, 0, 0, 1)
+Panel/styles/panel = ExtResource("2_pspxt")
+TextEdit/colors/background_color = Color(0.976471, 0.976471, 0.976471, 0)
+TextEdit/colors/caret_background_color = Color(0, 0, 0, 0)
+TextEdit/colors/caret_color = Color(0.87451, 0.87451, 0.87451, 0)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccp5ejc8l2sc2"]
+
+[ext_resource type="Texture2D" uid="uid://bgov1yrcmmaci" path="res://asset/UI/camera/photo.png" id="1_gb71s"]
+[ext_resource type="Script" path="res://ui/PhotoAlbum/photo.gd" id="2_s4u3r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgplh"]
+size = Vector2(259, 188)
+
+[node name="Photo" type="TextureButton" groups=["photo"]]
+offset_right = 780.0
+offset_bottom = 540.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_gb71s")
+stretch_mode = 0
+script = ExtResource("2_s4u3r")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["photo"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(388.5, 270)
+shape = SubResource("RectangleShape2D_fgplh")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

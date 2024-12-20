@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu4lwk6t8oacb"]
+
+[ext_resource type="Script" path="res://ui/Buttons/SwtichButton.gd" id="1_ydjbk"]
+[ext_resource type="Texture2D" uid="uid://p33ute34ty7v" path="res://asset/scene/sun3/research/switch/smalloff.png" id="2_5se6h"]
+[ext_resource type="Texture2D" uid="uid://cqkyls5gr5gfe" path="res://asset/scene/sun3/research/switch/smallon.png" id="3_ti3ho"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qdmt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5se6h")
+}],
+"loop": true,
+"name": &"off",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ti3ho")
+}],
+"loop": true,
+"name": &"on",
+"speed": 2.0
+}]
+
+[node name="SwitchButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ydjbk")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -116.0
+offset_top = -111.0
+offset_right = 110.0
+offset_bottom = 108.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5qdmt")
+animation = &"off"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

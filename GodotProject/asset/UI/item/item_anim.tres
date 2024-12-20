@@ -1,0 +1,125 @@
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://degbikdvh4mne"]
+
+[ext_resource type="Texture2D" uid="uid://cga7pglmmm2o" path="res://asset/UI/characters/none.png" id="1_hyv46"]
+[ext_resource type="Texture2D" uid="uid://dm5ooah1muwdh" path="res://asset/UI/item/album.png" id="1_tcrbw"]
+[ext_resource type="Texture2D" uid="uid://duh5t7fi34rib" path="res://asset/UI/item/camera.png" id="2_efuv8"]
+[ext_resource type="Texture2D" uid="uid://yep45kku506f" path="res://asset/UI/characters/no.png" id="3_av3i1"]
+[ext_resource type="Texture2D" uid="uid://dkri1s3stc6an" path="res://asset/UI/item/daylily.png" id="3_keybh"]
+[ext_resource type="Texture2D" uid="uid://curene6068fxp" path="res://asset/UI/item/particle.png" id="5_32idq"]
+[ext_resource type="Texture2D" uid="uid://c2qbbj0bwynyd" path="res://asset/UI/item/fmn.png" id="6_3aily"]
+[ext_resource type="Texture2D" uid="uid://dk2caitfnk2ue" path="res://asset/UI/item/nurseryKey.png" id="7_f0rq8"]
+[ext_resource type="Texture2D" uid="uid://cuc6lpx0iowj" path="res://asset/UI/item/gameCard.png" id="7_wbtlp"]
+[ext_resource type="Texture2D" uid="uid://dmqacto7ug3wc" path="res://asset/UI/item/repairCard.png" id="9_t7x0s"]
+[ext_resource type="Texture2D" uid="uid://ce3fh1xn1ik1e" path="res://asset/UI/item/rope.png" id="10_nbu3b"]
+[ext_resource type="Texture2D" uid="uid://ba0d0e5p2lhij" path="res://asset/UI/item/workCard.png" id="11_iei65"]
+[ext_resource type="Texture2D" uid="uid://bg6igegyrpvpc" path="res://asset/UI/item/unfun.png" id="12_gfc0b"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tcrbw")
+}],
+"loop": true,
+"name": &"album",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_efuv8")
+}],
+"loop": true,
+"name": &"camera",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_keybh")
+}],
+"loop": true,
+"name": &"daylily",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hyv46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_av3i1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3aily")
+}],
+"loop": true,
+"name": &"fmn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wbtlp")
+}],
+"loop": true,
+"name": &"gameCard",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_f0rq8")
+}],
+"loop": true,
+"name": &"nurseryKey",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_32idq")
+}],
+"loop": true,
+"name": &"particle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_t7x0s")
+}],
+"loop": true,
+"name": &"repairCard",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_nbu3b")
+}],
+"loop": true,
+"name": &"rope",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_gfc0b")
+}],
+"loop": true,
+"name": &"unfun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_gfc0b")
+}],
+"loop": true,
+"name": &"unfunSigned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_iei65")
+}],
+"loop": true,
+"name": &"workCard",
+"speed": 5.0
+}]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://cd3ci3xoqyxbm"
+path="res://.godot/imported/sunspot.dialogue-4e16ce423fbe2a925ae266c9e5d4689c.tres"
+
+[deps]
+
+source_file="res://dialog/world_dialog/sunspot.dialogue"
+dest_files=["res://.godot/imported/sunspot.dialogue-4e16ce423fbe2a925ae266c9e5d4689c.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxl2s4glp1lts"]
+
+[ext_resource type="Shader" path="res://ui/CameraScene/dissolve.gdshader" id="1_dc734"]
+[ext_resource type="Script" path="res://ui/PhotoAlbum/photo_detail.gd" id="2_864f5"]
+[ext_resource type="Shader" path="res://ui/CameraScene/photo.gdshader" id="2_mf0wg"]
+[ext_resource type="Texture2D" uid="uid://dn08gkhd474hk" path="res://save/default/photos/photo6.png" id="3_0elam"]
+[ext_resource type="Theme" uid="uid://bc3ohqpp1sfg3" path="res://asset/art/transparency_theme.tres" id="3_1dfdl"]
+[ext_resource type="Theme" uid="uid://dk7bs1nrgjo7f" path="res://dialog/main_balloon/main_balloon.tres" id="4_g3eob"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dsw77"]
+shader = ExtResource("1_dc734")
+shader_parameter/threshold = 0.1
+shader_parameter/fadeout = 0.0
+shader_parameter/inter_color = Vector4(1, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p37gg"]
+shader = ExtResource("2_mf0wg")
+shader_parameter/texture_size = Vector2(380, 270)
+shader_parameter/radius = 10.0
+
+[sub_resource type="Animation" id="Animation_j6swq"]
+resource_name = "dissolve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/fadeout")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ugqgp"]
+_data = {
+"dissolve": SubResource("Animation_j6swq")
+}
+
+[node name="PhotoDetail" type="Node2D"]
+material = SubResource("ShaderMaterial_dsw77")
+script = ExtResource("2_864f5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 1973.0
+offset_bottom = 1151.0
+color = Color(0, 0, 0, 0.329412)
+
+[node name="BackButton" type="Button" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("3_1dfdl")
+metadata/_edit_use_anchors_ = true
+
+[node name="DescriptionButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 292.0
+offset_top = 337.0
+offset_right = 2207.21
+offset_bottom = 1417.0
+scale = Vector2(0.360001, 0.360001)
+metadata/_edit_use_anchors_ = true
+
+[node name="Photo" type="CanvasGroup" parent="."]
+use_parent_material = true
+position = Vector2(578, 562)
+
+[node name="Sample" type="Sprite2D" parent="Photo"]
+material = SubResource("ShaderMaterial_p37gg")
+use_parent_material = true
+position = Vector2(65, -38)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_0elam")
+
+[node name="LocationLabel" type="Label" parent="."]
+use_parent_material = true
+offset_left = 1109.0
+offset_top = 384.0
+offset_right = 1459.0
+offset_bottom = 436.0
+theme = ExtResource("4_g3eob")
+theme_override_font_sizes/font_size = 50
+text = "太阳耀斑三号线"
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabel" type="Label" parent="."]
+use_parent_material = true
+offset_left = 1335.0
+offset_top = 490.0
+offset_right = 1685.0
+offset_bottom = 542.0
+theme = ExtResource("4_g3eob")
+theme_override_font_sizes/font_size = 50
+text = "2022/4/30"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ugqgp")
+}
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://d21fibu24uxe0"]
+
+[ext_resource type="Texture2D" uid="uid://bv4w02lflsq4i" path="res://asset/scene/sun3/research/sunspot/eyeopen.png" id="1_0j5oq"]
+[ext_resource type="Script" path="res://scene/sun/sun3/sunspot_count/sun_spot.gd" id="1_xhkgu"]
+[ext_resource type="Texture2D" uid="uid://87t0cyl88egc" path="res://asset/scene/sun3/research/sunspot/eyeclosed.png" id="2_go2nw"]
+[ext_resource type="Texture2D" uid="uid://dc0iipbkfvwvm" path="res://asset/scene/sun3/research/sunspot/1.png" id="3_4ot0x"]
+[ext_resource type="Texture2D" uid="uid://cek3xt384wr7a" path="res://asset/scene/sun3/research/sunspot/2.png" id="4_08ou7"]
+[ext_resource type="Texture2D" uid="uid://k7ddf3auy73r" path="res://asset/scene/sun3/research/sunspot/eyeleft.png" id="4_l6t4v"]
+[ext_resource type="Texture2D" uid="uid://dlynuvgydwl3v" path="res://asset/scene/sun3/research/sunspot/3.png" id="5_03jn0"]
+[ext_resource type="Texture2D" uid="uid://bepsl4odbixxr" path="res://asset/scene/sun3/research/sunspot/eyeright.png" id="5_uvh4e"]
+[ext_resource type="Texture2D" uid="uid://cim5xrksr0j47" path="res://asset/scene/sun3/research/sunspot/4.png" id="6_cp1ki"]
+[ext_resource type="Texture2D" uid="uid://dyuni0qv2wl1c" path="res://asset/scene/sun3/research/sunspot/smile.png" id="6_sgkw8"]
+[ext_resource type="Texture2D" uid="uid://v5f7wlkna0dx" path="res://asset/scene/sun3/research/sunspot/surprised.png" id="7_xainb"]
+[ext_resource type="Texture2D" uid="uid://cf3ej0ybqt0bh" path="res://asset/scene/sun3/research/sunspot/hand2.png" id="12_bwnka"]
+[ext_resource type="Texture2D" uid="uid://drfhpfmupqjci" path="res://asset/scene/sun3/research/sunspot/hand1.png" id="13_nbyn5"]
+[ext_resource type="Texture2D" uid="uid://bxtfxast0n1ta" path="res://asset/scene/sun3/research/sunspot/ear.png" id="14_fd7ow"]
+
+[node name="SunSpot" type="Node2D"]
+script = ExtResource("1_xhkgu")
+
+[node name="Eye1" type="Node2D" parent="."]
+
+[node name="Eyeopen" type="Sprite2D" parent="Eye1"]
+visible = false
+position = Vector2(-3, 4)
+texture = ExtResource("1_0j5oq")
+
+[node name="Eyeclosed" type="Sprite2D" parent="Eye1"]
+position = Vector2(-4, 17)
+texture = ExtResource("2_go2nw")
+
+[node name="Eye2" type="Node2D" parent="."]
+visible = false
+scale = Vector2(0.605, 0.605)
+
+[node name="Eyeleft" type="Sprite2D" parent="Eye2"]
+position = Vector2(4, 7)
+texture = ExtResource("4_l6t4v")
+
+[node name="Eyeright" type="Sprite2D" parent="Eye2"]
+visible = false
+position = Vector2(4, 7)
+texture = ExtResource("5_uvh4e")
+
+[node name="Mouth" type="Node2D" parent="."]
+visible = false
+
+[node name="Smile" type="Sprite2D" parent="Mouth"]
+position = Vector2(25, 2)
+texture = ExtResource("6_sgkw8")
+
+[node name="Surprised" type="Sprite2D" parent="Mouth"]
+visible = false
+position = Vector2(25, 2)
+texture = ExtResource("7_xainb")
+
+[node name="Spots" type="Node2D" parent="."]
+visible = false
+
+[node name="1" type="Sprite2D" parent="Spots"]
+position = Vector2(-2, 1)
+texture = ExtResource("3_4ot0x")
+
+[node name="2" type="Sprite2D" parent="Spots"]
+position = Vector2(-2, 1)
+texture = ExtResource("4_08ou7")
+
+[node name="3" type="Sprite2D" parent="Spots"]
+position = Vector2(-2, 1)
+texture = ExtResource("5_03jn0")
+
+[node name="4" type="Sprite2D" parent="Spots"]
+position = Vector2(-2, 1)
+texture = ExtResource("6_cp1ki")
+
+[node name="Other" type="Node2D" parent="."]
+visible = false
+
+[node name="Hand1" type="Sprite2D" parent="Other"]
+position = Vector2(1, -14)
+texture = ExtResource("12_bwnka")
+
+[node name="Hand2" type="Sprite2D" parent="Other"]
+position = Vector2(14, -30)
+texture = ExtResource("13_nbyn5")
+
+[node name="Ear" type="Sprite2D" parent="Other"]
+position = Vector2(0, -16)
+texture = ExtResource("14_fd7ow")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 63.0
+offset_bottom = 67.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

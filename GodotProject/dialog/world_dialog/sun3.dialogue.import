@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://b8l6f36fkjr5u"
+path="res://.godot/imported/sun3.dialogue-542783ebce0b4cd2914f737e2857740a.tres"
+
+[deps]
+
+source_file="res://dialog/world_dialog/sun3.dialogue"
+dest_files=["res://.godot/imported/sun3.dialogue-542783ebce0b4cd2914f737e2857740a.tres"]
+
+[params]
+
+defaults=true

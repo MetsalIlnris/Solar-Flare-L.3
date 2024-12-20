@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dbiyhxkwi4cw0"]
+
+[ext_resource type="Texture2D" uid="uid://dly5cidnfahtv" path="res://asset/scene/sun3/research/switch/bigoff.png" id="1_nngb3"]
+[ext_resource type="Texture2D" uid="uid://nnjyvadjw2qh" path="res://asset/scene/sun3/research/switch/bigon.png" id="2_10x6f"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nngb3")
+}],
+"loop": true,
+"name": &"off",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_10x6f")
+}],
+"loop": true,
+"name": &"on",
+"speed": 2.0
+}]

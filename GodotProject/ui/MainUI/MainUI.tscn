@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://db0wn1ipsj75j"]
+
+[ext_resource type="Script" path="res://ui/MainUI/MainUI.gd" id="1_kdekm"]
+[ext_resource type="PackedScene" uid="uid://dd2fug6qcuj86" path="res://ui/CameraScene/camera_scene.tscn" id="2_khw6o"]
+[ext_resource type="PackedScene" uid="uid://cxrwyd2evq5yh" path="res://ui/PauseMenu/PauseMenu.tscn" id="3_0i05a"]
+[ext_resource type="PackedScene" uid="uid://dw34k8efr625u" path="res://ui/PhotoAlbum/photo_album.tscn" id="4_31fre"]
+[ext_resource type="PackedScene" uid="uid://dmfkvusak1j7k" path="res://ui/TestButtons/test_buttons.tscn" id="5_f12ge"]
+[ext_resource type="PackedScene" uid="uid://bcifo4ykssrf6" path="res://ui/ItemBag/ItemBag.tscn" id="6_ss52q"]
+
+[node name="MainUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kdekm")
+
+[node name="CameraScene" parent="." instance=ExtResource("2_khw6o")]
+visible = false
+
+[node name="PhotoAlbum" parent="." instance=ExtResource("4_31fre")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_0i05a")]
+process_mode = 2
+visible = false
+offset_left = 691.0
+offset_top = 12.0
+offset_right = 691.0
+offset_bottom = 12.0
+
+[node name="TestButtons" parent="." instance=ExtResource("5_f12ge")]
+offset_left = -164.0
+offset_top = 44.0
+offset_right = -164.0
+offset_bottom = 44.0
+
+[node name="ItemBag" parent="." instance=ExtResource("6_ss52q")]
+visible = false

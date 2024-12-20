@@ -1,0 +1,33 @@
+~ dialog_rgy
+毛毛呆[#rNormal][#r]: 你好，我是毛毛呆
+毛毛杲[#yNormal][#r]: 你好，我是毛毛杲
+毛毛果[#gNormal][#r]: 你好，我是毛毛果
+=> END
+
+~ room_dark
+16180[#16180Normal][#l]: 这里太黑了，似乎没通电
+=> END
+
+~ switch_light1_off
+16180[#16180Normal][#l]: 左边房间的电源指示灯，似乎需要让左边三个电闸开关同时打开？
+=> END
+
+~ switch_light2_off
+16180[#16180Normal][#l]: 中间房间的电源指示灯，似乎需要让中间三个电闸开关同时打开？
+=> END
+
+~ switch_light3_off
+16180[#16180Normal][#l]: 右边房间的电源指示灯，似乎需要让右边三个电闸开关同时打开？
+=> END
+
+~ switch_light1_on
+16180[#16180Normal][#l]: 左边房间的电源指示灯亮起了！去左边的房间看看吧！
+=> END
+
+~ switch_light2_on
+16180[#16180Normal][#l]: 中间房间的电源指示灯亮起了！去中间的房间看看吧！
+=> END
+
+~ switch_light3_on
+16180[#16180Normal][#l]: 右边房间的电源指示灯亮起了！去右边的房间看看吧！
+=> END

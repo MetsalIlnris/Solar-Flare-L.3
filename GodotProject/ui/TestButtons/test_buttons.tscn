@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmfkvusak1j7k"]
+
+[ext_resource type="Script" path="res://ui/TestButtons/test_buttons.gd" id="1_13rkn"]
+
+[node name="TestButtons" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_13rkn")
+
+[node name="saveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 66.0
+offset_right = 460.0
+offset_bottom = 128.0
+text = "保存save1"
+
+[node name="loadButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 141.0
+offset_right = 461.0
+offset_bottom = 203.0
+text = "读取save1"
+
+[node name="kitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 141.0
+offset_right = 629.0
+offset_bottom = 203.0
+text = "按钮"
+
+[node name="emoButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 66.0
+offset_right = 630.0
+offset_bottom = 128.0
+text = "按钮"
+
+[node name="sanButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 66.0
+offset_right = 800.0
+offset_bottom = 128.0
+text = "按钮"
+
+[node name="hideButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 663.0
+offset_top = 141.0
+offset_right = 800.0
+offset_bottom = 203.0
+text = "隐藏test"
+
+[connection signal="pressed" from="saveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="loadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="kitButton" to="." method="_on_kit_button_pressed"]
+[connection signal="pressed" from="emoButton" to="." method="_on_emo_button_pressed"]
+[connection signal="pressed" from="sanButton" to="." method="_on_san_button_pressed"]
+[connection signal="pressed" from="hideButton" to="." method="_on_hide_button_pressed"]

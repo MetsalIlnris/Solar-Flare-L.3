@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbj5o2g5jffx2"]
+
+[ext_resource type="Script" path="res://scene/sun/sun1/particle/bubble.gd" id="1_yimxy"]
+[ext_resource type="Texture2D" uid="uid://darjbh8ay2xup" path="res://asset/scene/sun/particle/bubble/1.png" id="2_vv2nk"]
+[ext_resource type="Texture2D" uid="uid://cdhghnxmdt00" path="res://asset/scene/sun/particle/bubble/2.png" id="3_rbg0d"]
+[ext_resource type="Texture2D" uid="uid://b8dlnl8piw2fi" path="res://asset/scene/sun/particle/bubble/3.png" id="4_f33gd"]
+[ext_resource type="Texture2D" uid="uid://by0onug5ap8r3" path="res://asset/scene/sun/particle/bubble/4.png" id="5_dtukn"]
+
+[sub_resource type="Animation" id="Animation_dpxa7"]
+resource_name = "modulate"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.03333, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cq4hv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1g8a0"]
+_data = {
+"RESET": SubResource("Animation_cq4hv"),
+"modulate": SubResource("Animation_dpxa7")
+}
+
+[node name="Bubble" type="Node2D"]
+script = ExtResource("1_yimxy")
+
+[node name="1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 1)
+texture = ExtResource("2_vv2nk")
+
+[node name="2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 1)
+texture = ExtResource("3_rbg0d")
+
+[node name="3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 1)
+texture = ExtResource("4_f33gd")
+
+[node name="4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 1)
+texture = ExtResource("5_dtukn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1g8a0")
+}
+autoplay = "modulate"

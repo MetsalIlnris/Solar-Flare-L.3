@@ -1,0 +1,77 @@
+~ album
+if PlayerState.yan_in_group():
+	岩[#yanSmile][#r]: 这是我们的相册！
+	16180[#16180Normal][#l]: 沉甸甸的都是一路上的回忆呢
+	岩[#yanSmile][#r]: 现在要看看吗？
+	- 不要
+	16180[#16180Normal][#l]: ...（还是不要给她看为好
+else:
+	16180[#16180Normal][#l]: 岩去哪了？
+=> END
+
+~ camera
+16180[#16180Normal][#l]: 我的相机...
+if PlayerState.yan_in_group():
+	岩[#yanSmile][#r]: 今天也要拍很多很多照片！
+	16180[#16180Normal][#l]: 嗯嗯，一定！
+=> END
+
+~ particle
+16180[#16180Normal][#l]: 在太阳粒子收集塔收集的太阳粒子
+if PlayerState.yan_in_group():
+	岩[#yanSmile][#r]: 收集真的废了好多力气...
+=> END
+
+~ workCard
+16180[#16180Normal][#l]: 某个已经不在这里工作的某个工作人员的工作证
+16180[#16180Normal][#l]: 上面有这个工作人员的各种信息...为什么会落下这么重要的东西？
+if PlayerState.yan_in_group():
+	岩[#yanSmile][#r]: 总之，有了这张卡就能进入太阳收集塔了！
+=> END
+
+~ repairCard
+16180[#16180Normal][#l]: 机器人总管给我们的机器人修理程序，插上机器人的外界编程接口可以读取他们的操作系统
+if PlayerState.yan_in_group():
+	岩[#yanSmile][#r]: 让我们一起去修复损坏的机器人吧！
+=> END
+
+~ fmn
+16180[#16180Normal][#l]: 勿忘我...
+if PlayerState.yan_in_group():
+	岩[#yanSmile][#r]: 这是什么呀？
+=> END
+
+~ daylily
+
+if PlayerState.yan_in_group():
+	16180[#16180Normal][#l]: 忘忧草，煮熟后能释放令人昏睡的气体...不能让岩看到了
+else:
+	16180[#16180Normal][#l]: 忘忧草，煮熟后能释放令人昏睡的气体
+=> END
+
+~ nurseryKey
+16180[#16180Normal][#l]: 废弃游乐园的后山有一片苗圃，这是打开大门的钥匙
+=> END
+
+~ rope
+16180[#16180Normal][#l]: 太阳科技，几千度都不会烧坏的绳子，看起来小却能无限延伸到几十公里远
+=> END
+
+~ unfun
+16180[#16180Normal][#l]: 一张摇滚乐专辑，是我很喜欢的乐队
+if PlayerState.yan_in_group():
+	岩[#yanSmile][#r]: 我也超爱！
+=> END
+
+~ unfunSigned
+16180[#16180Normal][#l]: 一张摇滚乐专辑，是我很喜欢的乐队，上面还有乐队各成员的签名...
+if PlayerState.yan_in_group():
+	岩[#yanSmile][#r]: 我真的会永远珍藏它们！
+=> END
+
+~ gameCard
+16180[#16180Normal][#l]: 一张能让我们在游戏厅通玩的VIP卡
+if PlayerState.yan_in_group():
+	岩[#yanSmile][#r]: （邪魅一笑）
+	16180[#16180Normal][#l]: 我不会输给你的！！
+=> END

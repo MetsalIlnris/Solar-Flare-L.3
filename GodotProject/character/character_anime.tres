@@ -1,0 +1,45 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dvmuc747e6pda"]
+
+[ext_resource type="Texture2D" uid="uid://bbxbnbk8ku35s" path="res://asset/character/sun/washer/await.png" id="1_c18gy"]
+[ext_resource type="Texture2D" uid="uid://08wihingcmop" path="res://asset/character/sun/washer/1.png" id="8_q5v1l"]
+[ext_resource type="Texture2D" uid="uid://b87x3h1nwqfya" path="res://asset/character/sun/washer/2.png" id="9_3odi0"]
+[ext_resource type="Texture2D" uid="uid://dnbgl3nqmfxew" path="res://asset/character/sun/washer/3.png" id="10_wk63q"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c18gy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_q5v1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3odi0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wk63q")
+}],
+"loop": true,
+"name": &"run",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_q5v1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3odi0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wk63q")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]

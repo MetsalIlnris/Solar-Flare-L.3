@@ -1,0 +1,308 @@
+[gd_scene load_steps=28 format=3 uid="uid://bkyu4xnf1l4by"]
+
+[ext_resource type="PackedScene" uid="uid://c73puwysc060f" path="res://scene/map_scene.tscn" id="1_ot7f7"]
+[ext_resource type="Script" path="res://scene/station/station.gd" id="2_3k640"]
+[ext_resource type="Texture2D" uid="uid://oetudm188127" path="res://asset/scene/station/elevator/elevator_hall.png" id="2_gokps"]
+[ext_resource type="Texture2D" uid="uid://cbx5p1a17nm02" path="res://asset/scene/station/earth.png" id="3_fyxxm"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_lolrp"]
+[ext_resource type="PackedScene" uid="uid://bc8orr56j7ttx" path="res://character/16180/16180.tscn" id="3_v5061"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_50k4o"]
+[ext_resource type="PackedScene" uid="uid://blevfe0ojycgx" path="res://character/yan/yan.tscn" id="4_ncw56"]
+[ext_resource type="Texture2D" uid="uid://dp2heh8bvbvcj" path="res://asset/scene/station/elevator/elevator.png" id="5_itvx2"]
+[ext_resource type="Texture2D" uid="uid://cmpwvlakalp8g" path="res://asset/scene/station/elevator/elevator_screen.png" id="5_j08sr"]
+[ext_resource type="Texture2D" uid="uid://pb4dyent51e1" path="res://asset/scene/station/main/background.png" id="6_31cgx"]
+[ext_resource type="PackedScene" uid="uid://2ixaiviu85yc" path="res://character/sun/washer/washer.tscn" id="6_th7gi"]
+[ext_resource type="PackedScene" uid="uid://cmy3qm1wjta1v" path="res://character/sun/rubbish/rubbish.tscn" id="7_n31wb"]
+[ext_resource type="Texture2D" uid="uid://vayxi827o4v7" path="res://asset/scene/station/to_sun/platform.png" id="9_411up"]
+[ext_resource type="PackedScene" uid="uid://duxvarvt3mg3r" path="res://ui/Interactive/InteractDoor.tscn" id="13_8eryc"]
+[ext_resource type="Texture2D" uid="uid://hocmylwo35ci" path="res://asset/scene/station/main/sign.png" id="14_63day"]
+[ext_resource type="Texture2D" uid="uid://4ulajtlghoil" path="res://asset/scene/station/main/icon/earth.png" id="15_qa0pr"]
+[ext_resource type="Texture2D" uid="uid://v86cqgfnwcy2" path="res://asset/scene/station/main/icon/sun.png" id="16_f1ps3"]
+[ext_resource type="Texture2D" uid="uid://bbk0mf2gjs82y" path="res://asset/scene/sun/station/train.png" id="17_ym4c3"]
+
+[sub_resource type="Resource" id="Resource_6vbas"]
+script = ExtResource("4_50k4o")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5fgs"]
+size = Vector2(8026, 1081)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2vlw"]
+size = Vector2(4000, 1081)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu0ey"]
+size = Vector2(6497, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3od5f"]
+size = Vector2(277.5, 576.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08qj3"]
+size = Vector2(7051, 377)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfilx"]
+size = Vector2(4006, 253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8met"]
+size = Vector2(6495, 231)
+
+[node name="MapScene" instance=ExtResource("1_ot7f7")]
+script = ExtResource("2_3k640")
+
+[node name="MainCamera" parent="Camera" index="2"]
+physics_interpolation_mode = 1
+position = Vector2(1575, -1499)
+limit_left = 0
+limit_top = -2040
+limit_right = 4000
+limit_bottom = -959
+
+[node name="Main" parent="Camera" index="3" node_paths=PackedStringArray("follow_target")]
+position = Vector2(1575, -1499)
+follow_mode = 2
+follow_target = NodePath("../../Characters/16180")
+limit_target = NodePath("../CameraArea/MainAera")
+
+[node name="Elevator" type="Node2D" parent="Camera" index="4" node_paths=PackedStringArray("follow_target")]
+position = Vector2(1575, 548)
+script = ExtResource("3_lolrp")
+follow_mode = 2
+follow_target = NodePath("../../Characters/16180")
+tween_resource = SubResource("Resource_6vbas")
+draw_limits = true
+limit_target = NodePath("../CameraArea/ElevatorAera")
+
+[node name="Platform" type="Node2D" parent="Camera" index="5" node_paths=PackedStringArray("follow_target")]
+position = Vector2(1575, 2000)
+script = ExtResource("3_lolrp")
+follow_mode = 2
+follow_target = NodePath("../../Characters/16180")
+tween_resource = SubResource("Resource_6vbas")
+draw_limits = true
+limit_target = NodePath("../CameraArea/PlatFormAera")
+
+[node name="ElevatorAera" type="CollisionShape2D" parent="Camera/CameraArea" index="0"]
+position = Vector2(1948, 548.5)
+shape = SubResource("RectangleShape2D_p5fgs")
+debug_color = Color(0.639216, 0.337255, 1, 0.109804)
+
+[node name="MainAera" type="CollisionShape2D" parent="Camera/CameraArea" index="1"]
+position = Vector2(2000, -1499.5)
+shape = SubResource("RectangleShape2D_b2vlw")
+debug_color = Color(0.639216, 0.337255, 1, 0.109804)
+
+[node name="PlatFormAera" type="CollisionShape2D" parent="Camera/CameraArea" index="2"]
+position = Vector2(2999.5, 2000)
+shape = SubResource("RectangleShape2D_cu0ey")
+debug_color = Color(0.639216, 0.337255, 1, 0.109804)
+
+[node name="BackgroundLayer" parent="ParallaxBackground" index="0"]
+motion_scale = Vector2(0.01, 0.01)
+
+[node name="background" parent="ParallaxBackground/BackgroundLayer" index="0"]
+material = null
+position = Vector2(956, 511)
+texture = ExtResource("3_fyxxm")
+
+[node name="Background" type="Sprite2D" parent="RoomLayer" index="0"]
+position = Vector2(2000, -1500)
+texture = ExtResource("6_31cgx")
+
+[node name="Elevator" type="Node2D" parent="RoomLayer" index="1"]
+
+[node name="Platform" type="Sprite2D" parent="RoomLayer/Elevator" index="0"]
+position = Vector2(2200, 548)
+texture = ExtResource("2_gokps")
+
+[node name="Elevator" type="Sprite2D" parent="RoomLayer/Elevator" index="1"]
+position = Vector2(2040, 553)
+texture = ExtResource("5_itvx2")
+
+[node name="Sun" type="Node2D" parent="RoomLayer" index="2"]
+
+[node name="Platform" type="Sprite2D" parent="RoomLayer/Sun" index="0"]
+position = Vector2(3000, 2000)
+texture = ExtResource("9_411up")
+
+[node name="CollisionPolygon2D" parent="PlayerBoundary" index="0"]
+position = Vector2(-1250, 534)
+
+[node name="CollisionPolygon2D2" parent="PlayerBoundary" index="1"]
+position = Vector2(6096, 554)
+
+[node name="CollisionPolygon2D3" type="CollisionShape2D" parent="PlayerBoundary" index="2"]
+position = Vector2(-167, -1486)
+shape = SubResource("RectangleShape2D_3od5f")
+
+[node name="CollisionPolygon2D4" type="CollisionShape2D" parent="PlayerBoundary" index="3"]
+position = Vector2(4190, -1499)
+shape = SubResource("RectangleShape2D_3od5f")
+
+[node name="CollisionPolygon2D5" type="CollisionShape2D" parent="PlayerBoundary" index="4"]
+position = Vector2(-414, 2004)
+shape = SubResource("RectangleShape2D_3od5f")
+
+[node name="CollisionPolygon2D6" type="CollisionShape2D" parent="PlayerBoundary" index="5"]
+position = Vector2(6405, 2026)
+shape = SubResource("RectangleShape2D_3od5f")
+
+[node name="16180" parent="Characters" index="0" instance=ExtResource("3_v5061")]
+position = Vector2(1575, -1192)
+
+[node name="yan" parent="Characters" index="1" instance=ExtResource("4_ncw56")]
+position = Vector2(417, 827)
+
+[node name="w" type="Node2D" parent="Characters" index="2"]
+
+[node name="Wahser" parent="Characters/w" index="0" instance=ExtResource("6_th7gi")]
+position = Vector2(2068, 746)
+
+[node name="Wahser2" parent="Characters/w" index="1" instance=ExtResource("6_th7gi")]
+position = Vector2(2428, 740)
+
+[node name="Wahser3" parent="Characters/w" index="2" instance=ExtResource("6_th7gi")]
+position = Vector2(2832, 719)
+
+[node name="RayCast2D" type="RayCast2D" parent="Characters" index="3"]
+
+[node name="yan" parent="Characters/RayCast2D" index="0" instance=ExtResource("4_ncw56")]
+position = Vector2(1477, 800)
+
+[node name="16181" parent="Characters/RayCast2D" index="1" instance=ExtResource("3_v5061")]
+position = Vector2(3075, 804)
+
+[node name="Rubbish" parent="Objects" index="0" instance=ExtResource("7_n31wb")]
+position = Vector2(621, 827)
+
+[node name="Rubbish2" parent="Objects" index="1" instance=ExtResource("7_n31wb")]
+position = Vector2(3387, 827)
+
+[node name="Rubbish3" parent="Objects" index="2" instance=ExtResource("7_n31wb")]
+position = Vector2(2336, 819)
+
+[node name="Rubbish4" parent="Objects" index="3" instance=ExtResource("7_n31wb")]
+position = Vector2(1865, 824)
+
+[node name="Rubbish5" parent="Objects" index="4" instance=ExtResource("7_n31wb")]
+position = Vector2(1432, 820)
+
+[node name="Rubbish6" parent="Objects" index="5" instance=ExtResource("7_n31wb")]
+position = Vector2(974, 829)
+
+[node name="InteractDoor" parent="Doors" index="0" node_paths=PackedStringArray("change_camera") instance=ExtResource("13_8eryc")]
+position = Vector2(393, -1297)
+change_camera = NodePath("../../Camera/Elevator")
+transfer_fade = true
+transfer_duration = 1.0
+dialog = false
+tip = "进入"
+label_height = -300
+
+[node name="Marker2D" parent="Doors/InteractDoor" index="1"]
+position = Vector2(5137, 2135)
+
+[node name="InteractDoor2" parent="Doors" index="1" node_paths=PackedStringArray("change_camera") instance=ExtResource("13_8eryc")]
+position = Vector2(393, -1297)
+change_camera = NodePath("../../Camera/Main")
+transfer_fade = true
+transfer_duration = 1.0
+dialog = false
+tip = "进入"
+label_height = -300
+
+[node name="CollisionShape2D" parent="Doors/InteractDoor2" index="0"]
+position = Vector2(5136, 2010)
+
+[node name="Marker2D" parent="Doors/InteractDoor2" index="1"]
+position = Vector2(3, 101)
+
+[node name="InteractDoor3" parent="Doors" index="2" node_paths=PackedStringArray("change_camera") instance=ExtResource("13_8eryc")]
+position = Vector2(393, -1297)
+change_camera = NodePath("../../Camera/Main")
+transfer_fade = true
+transfer_duration = 1.0
+dialog = false
+tip = "进入"
+label_height = -300
+
+[node name="CollisionShape2D" parent="Doors/InteractDoor3" index="0"]
+position = Vector2(-208, 3478)
+
+[node name="Marker2D" parent="Doors/InteractDoor3" index="1"]
+position = Vector2(3259, 86)
+
+[node name="InteractDoor4" parent="Doors" index="3" node_paths=PackedStringArray("change_camera") instance=ExtResource("13_8eryc")]
+position = Vector2(393, -1297)
+change_camera = NodePath("../../Camera/Platform")
+transfer_fade = true
+transfer_duration = 1.0
+dialog = false
+tip = "进入"
+label_height = -300
+
+[node name="CollisionShape2D" parent="Doors/InteractDoor4" index="0"]
+position = Vector2(3232, 2)
+
+[node name="Marker2D" parent="Doors/InteractDoor4" index="1"]
+position = Vector2(-194, 3594)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor" index="0"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D" index="0"]
+position = Vector2(2436.5, 1020)
+shape = SubResource("RectangleShape2D_08qj3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor/StaticBody2D" index="1"]
+position = Vector2(2000, -1060.5)
+shape = SubResource("RectangleShape2D_lfilx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor/StaticBody2D" index="2"]
+position = Vector2(2988.5, 2393.5)
+shape = SubResource("RectangleShape2D_i8met")
+
+[node name="Sign" type="Sprite2D" parent="ParallaxFront/BlockLayer" index="0"]
+position = Vector2(771, -1936)
+texture = ExtResource("14_63day")
+
+[node name="Earth" type="Sprite2D" parent="ParallaxFront/BlockLayer/Sign" index="0"]
+position = Vector2(-5, 33)
+texture = ExtResource("15_qa0pr")
+
+[node name="Sign2" type="Sprite2D" parent="ParallaxFront/BlockLayer" index="1"]
+position = Vector2(3215, -1933)
+texture = ExtResource("14_63day")
+
+[node name="Sun" type="Sprite2D" parent="ParallaxFront/BlockLayer/Sign2" index="0"]
+position = Vector2(6, 33)
+texture = ExtResource("16_f1ps3")
+
+[node name="Train" type="Sprite2D" parent="ParallaxFront/BlockLayer" index="2"]
+visible = false
+position = Vector2(1324, -1349)
+texture = ExtResource("17_ym4c3")
+
+[node name="Sign3" type="Sprite2D" parent="ParallaxFront/BlockLayer" index="3"]
+position = Vector2(5157, 116)
+texture = ExtResource("14_63day")
+
+[node name="Earth" type="Sprite2D" parent="ParallaxFront/BlockLayer/Sign3" index="0"]
+position = Vector2(-5, 33)
+texture = ExtResource("15_qa0pr")
+
+[node name="ElevatorScreen" type="Sprite2D" parent="ParallaxFront/FrontLayer" index="0"]
+position = Vector2(468, 191)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_j08sr")
+
+[node name="ElevatorScreen2" type="Sprite2D" parent="ParallaxFront/FrontLayer" index="1"]
+position = Vector2(6528, 1636)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_j08sr")
+
+[editable path="Doors/InteractDoor"]
+[editable path="Doors/InteractDoor2"]
+[editable path="Doors/InteractDoor3"]
+[editable path="Doors/InteractDoor4"]

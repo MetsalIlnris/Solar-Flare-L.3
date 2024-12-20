@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxrwyd2evq5yh"]
+
+[ext_resource type="Theme" uid="uid://cpy8ag3q7cmah" path="res://ui/PauseMenu/pause_menu_style.tres" id="1_5rkwf"]
+[ext_resource type="Script" path="res://ui/PauseMenu/PauseMenu.gd" id="1_x4c7s"]
+
+[node name="Menu" type="CanvasLayer"]
+layer = 50
+script = ExtResource("1_x4c7s")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 606.0
+offset_bottom = 1076.0
+theme = ExtResource("1_5rkwf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.055
+anchor_bottom = 0.705
+offset_left = 57.0
+offset_top = 90.0
+offset_right = -113.33
+offset_bottom = 228.42
+theme_override_constants/separation = 100
+
+[node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "继续游戏"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "加载"
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "存档"
+
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "退出游戏"

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2hfwlwfp17j5"]
+
+[ext_resource type="Texture2D" uid="uid://d0vhem1v5h4u4" path="res://asset/art/kokoc/mmexport1713189300242.jpg" id="1_23pyr"]
+[ext_resource type="Script" path="res://asset/art/kokoc/test.gd" id="1_fydss"]
+[ext_resource type="Shader" path="res://asset/art/halftone.gdshader" id="2_3wpu5"]
+[ext_resource type="Shader" path="res://scene/sun/sun1/sun.gdshader" id="4_mgkot"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ofob"]
+shader = ExtResource("2_3wpu5")
+shader_parameter/time = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7o5i"]
+shader = ExtResource("4_mgkot")
+shader_parameter/time = null
+
+[node name="Scene" type="Node2D"]
+script = ExtResource("1_fydss")
+
+[node name="Mmexport1713189300242" type="Sprite2D" parent="."]
+position = Vector2(959, 543)
+scale = Vector2(0.825, 0.825)
+texture = ExtResource("1_23pyr")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
+material = SubResource("ShaderMaterial_0ofob")
+offset_right = 1930.0
+offset_bottom = 1086.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_t7o5i")
+offset_right = 1930.0
+offset_bottom = 1086.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

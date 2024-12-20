@@ -1,0 +1,136 @@
+[gd_scene load_steps=15 format=3 uid="uid://dd2fug6qcuj86"]
+
+[ext_resource type="Script" path="res://ui/CameraScene/camera_scene.gd" id="1_x2la1"]
+[ext_resource type="Texture2D" uid="uid://cwid3b4r4g8pl" path="res://asset/UI/camera/shutter.png" id="2_4wqyq"]
+[ext_resource type="Texture2D" uid="uid://dv265p2lv5fcm" path="res://asset/art/texture/noise.png" id="2_kreas"]
+[ext_resource type="Texture2D" uid="uid://dlwbxkecibdps" path="res://asset/art/fade/过场动画_00008.png" id="2_l8v1n"]
+[ext_resource type="Texture2D" uid="uid://dinnkefatlu0t" path="res://asset/UI/camera/camera.png" id="3_e2cj1"]
+[ext_resource type="PackedScene" uid="uid://dbcc5afpi4q73" path="res://ui/Buttons/InteractiveButton.tscn" id="4_qg864"]
+[ext_resource type="Texture2D" uid="uid://dub14858cxlgh" path="res://asset/UI/camera/posture16180.png" id="6_ap4fs"]
+[ext_resource type="Texture2D" uid="uid://nv6480emi26h" path="res://asset/UI/camera/expression rocki.png" id="7_eoqjl"]
+[ext_resource type="Texture2D" uid="uid://chjs1bsj5wp5u" path="res://asset/UI/camera/posture rocki.png" id="8_ifnta"]
+[ext_resource type="PackedScene" uid="uid://dv5kldi7cs0ri" path="res://ui/CameraScene/confirm_ui.tscn" id="11_cj3ju"]
+[ext_resource type="Texture2D" uid="uid://b4j83nu65f01q" path="res://asset/UI/camera/sliding.png" id="11_m6qjh"]
+
+[sub_resource type="Animation" id="Animation_joe8w"]
+resource_name = "Shutter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShuUp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(395, -580), Vector2(395, -200), Vector2(395, -580)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShuDown:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(400, 1200), Vector2(400, 760), Vector2(400, 1200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kt0tt"]
+_data = {
+"Shutter": SubResource("Animation_joe8w")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48nvs"]
+texture = ExtResource("11_m6qjh")
+
+[node name="CameraScene" type="CanvasLayer"]
+layer = 15
+script = ExtResource("1_x2la1")
+
+[node name="ScreenContainer" type="ColorRect" parent="."]
+clip_children = 1
+offset_left = 558.0
+offset_top = 284.0
+offset_right = 1366.0
+offset_bottom = 852.0
+
+[node name="Screen" type="Sprite2D" parent="ScreenContainer"]
+position = Vector2(390, 240)
+texture = ExtResource("2_kreas")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScreenContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_kt0tt")
+}
+
+[node name="ShuUp" type="Sprite2D" parent="ScreenContainer"]
+position = Vector2(395, -580)
+texture = ExtResource("2_l8v1n")
+
+[node name="ShuDown" type="Sprite2D" parent="ScreenContainer"]
+position = Vector2(400, 1200)
+texture = ExtResource("2_l8v1n")
+
+[node name="ScreenViewport" type="SubViewport" parent="."]
+size = Vector2i(780, 540)
+render_target_update_mode = 4
+
+[node name="Screen" type="Sprite2D" parent="ScreenViewport"]
+position = Vector2(380, 245)
+
+[node name="Shutter" parent="." instance=ExtResource("4_qg864")]
+offset_left = 408.0
+offset_top = 117.0
+offset_right = -1120.0
+offset_bottom = -840.0
+texture_normal = ExtResource("2_4wqyq")
+
+[node name="Camera" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("3_e2cj1")
+
+[node name="InteractiveButton" parent="." instance=ExtResource("4_qg864")]
+offset_left = 40.0
+offset_top = 222.0
+offset_right = -1626.0
+offset_bottom = -566.0
+
+[node name="InteractiveButton2" parent="." instance=ExtResource("4_qg864")]
+offset_left = 21.0
+offset_top = 593.0
+offset_right = -1614.0
+offset_bottom = -200.0
+texture_normal = ExtResource("6_ap4fs")
+
+[node name="InteractiveButton3" parent="." instance=ExtResource("4_qg864")]
+offset_left = 1624.0
+offset_top = 263.0
+offset_right = -30.0
+offset_bottom = -577.0
+texture_normal = ExtResource("7_eoqjl")
+
+[node name="InteractiveButton4" parent="." instance=ExtResource("4_qg864")]
+offset_left = 1637.0
+offset_top = 666.0
+offset_right = -23.0
+offset_bottom = -189.0
+texture_normal = ExtResource("8_ifnta")
+
+[node name="VSlider" type="VScrollBar" parent="."]
+offset_left = 1447.0
+offset_top = 404.0
+offset_right = 1557.0
+offset_bottom = 739.0
+theme_override_styles/scroll = SubResource("StyleBoxTexture_48nvs")
+value = 50.0
+
+[node name="ConfirmUI" parent="." instance=ExtResource("11_cj3ju")]
+visible = false
+
+[connection signal="pressed" from="Shutter" to="." method="_on_shutter_pressed"]
+[connection signal="value_changed" from="VSlider" to="." method="_on_v_slider_value_changed"]

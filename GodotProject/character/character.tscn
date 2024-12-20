@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://cb3aftxrhs2ll"]
+
+[ext_resource type="Script" path="res://character/character.gd" id="1_niwt6"]
+[ext_resource type="Shader" path="res://asset/art/scene_processing.gdshader" id="2_qvt4s"]
+[ext_resource type="SpriteFrames" uid="uid://dvmuc747e6pda" path="res://character/character_anime.tres" id="3_l253r"]
+[ext_resource type="Script" path="res://character/StateMachine/IdleState.gd" id="4_ob7yn"]
+[ext_resource type="PackedScene" uid="uid://bsgmil627atop" path="res://character/StateMachine/WanderState.tscn" id="5_sogbf"]
+[ext_resource type="PackedScene" uid="uid://jtwhtks5mcbr" path="res://character/StateMachine/ControlState.tscn" id="6_vrnmn"]
+[ext_resource type="Script" path="res://character/StateMachine/FollowState.gd" id="7_hs36y"]
+[ext_resource type="Script" path="res://character/StateMachine/MoveState.gd" id="8_vjb3q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4ud4"]
+radius = 38.0
+height = 356.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2jht"]
+shader = ExtResource("2_qvt4s")
+
+[node name="character" type="CharacterBody2D" groups=["character"]]
+collision_mask = 16
+platform_wall_layers = 16
+script = ExtResource("1_niwt6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -208)
+shape = SubResource("CapsuleShape2D_y4ud4")
+
+[node name="MainAnim" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_p2jht")
+position = Vector2(-7, -181)
+sprite_frames = ExtResource("3_l253r")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="StateMachines" type="Node" parent="."]
+
+[node name="IdleState" type="Node" parent="StateMachines"]
+script = ExtResource("4_ob7yn")
+
+[node name="WanderState" parent="StateMachines" instance=ExtResource("5_sogbf")]
+
+[node name="ControlState" parent="StateMachines" instance=ExtResource("6_vrnmn")]
+
+[node name="FollowState" type="Node" parent="StateMachines"]
+script = ExtResource("7_hs36y")
+
+[node name="MoveState" type="Node" parent="StateMachines"]
+script = ExtResource("8_vjb3q")
