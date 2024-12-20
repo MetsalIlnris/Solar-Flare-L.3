@@ -1,9 +1,7 @@
 # Solar-Flare-L.3
 #### 作者
-kokoc  
-热寂  
-rocky   
-16180  
+kokoc - 美术 世界观
+热寂 - 程序 剧本 音乐
 
 ## 项目简介
 - 使用Godot4引擎制作的横板RPG游戏  
